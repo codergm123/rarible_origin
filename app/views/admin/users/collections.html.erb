@@ -1,0 +1,39 @@
+<div class="main-content">
+  <div class="page-content">
+    <div class="container-fluid">
+      <!-- start page title -->
+      <div class="row">
+        <div class="col-12">
+        </div>
+      </div>
+    </div>
+    <!-- end page title -->
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row" style="">
+              <% @collections.each do |collection| %>
+                <div class="my-explore-div">
+                  <div class="box-explore-bids">
+                    <div class="explore-bids-img" style="background-image: url(<%= url_for(collection.attachment) %>);">
+                      <%= image_tag url_for(collection.attachment), class: "img-responsive" %>
+                    </div>
+                    <div class="explore-bid-opt-img">
+                      <%= render partial: 'common/collection_owner_imgs', locals: {collection: collection} %>
+                    </div>
+                    <div class="explore-bids-content">
+                      <h4><%= collection.title %></h4>
+                      <p><b><%= collection.title_desc %></p>
+                      <p><%= t("shared.highest_bid")%> <b>0.02 WETH</b></p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

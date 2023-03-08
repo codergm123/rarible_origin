@@ -1,0 +1,21 @@
+<% if activity.event == "create" %>
+    <div class="activity">
+
+      <%= link_to user_path(activity.item.follower.address),:class=>"activity__cover" do %>
+          <%= image_tag url_for(activity.item.follower.profile_image),:size=>"140x162" %>
+      <% end %>
+      <div class="activity__content">
+        <h3 class="activity__title">
+          <%= link_to activity.item.follower.full_name, user_path(activity.item.follower.address) %>
+
+        </h3>
+        <p class="activity__text">started following
+          <%= link_to user_path(activity.item.followee.address) do %>
+              @<%= activity.item.followee.full_name %>
+          <% end %>   <br> on
+          <span class="activity__time"><%= time_ago_in_words(activity.created_at) %> </span>
+      </div>
+    </div>
+<% end %>
+
+

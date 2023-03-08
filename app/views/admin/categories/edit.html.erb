@@ -1,0 +1,20 @@
+<div class="main-content">
+  <div class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <%= form_tag(admin_category_path(@category), method: :put, multipart: true) do %>
+            <%= render 'form', category: @category, title: "Edit Category" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

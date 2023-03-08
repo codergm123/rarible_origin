@@ -1,0 +1,76 @@
+<div id="Bid-modal" class="zoom-anim-dialog mfp-hide modal sm_modal">
+  <button class="modal__close md_cls" type="button"><i class="fas fa-times"></i></button>
+  <h4 class="modal-title share_link_page_h4"><%= t('collections.show.place_a_bid') %></h4>
+
+
+  <p class="buynow-content">
+    <span class="innertitle"> <%= t('collections.show.bid_msg') %></span>
+    <span class="frm-title"><b><%= @collection.name %></b>,</span>
+    <span class="frm-desc"><%= @collection.description %>
+      <span class="frm-from" data-toggle="tooltip" data-placement="top" title="<%= @collection.owner.full_name %>">by <%= link_to @collection.owner.full_name, user_path(@collection.owner.address), target: '_blank' %></span></span>
+  </p>
+
+  <%= form_tag bid_collection_path(@collection.address), method: :post, remote: true, multipart: true, id: 'biddingForm' do %>
+
+
+    <div class="placebidbuy_valbox">
+      <div class="form-group bidBuyInputs">
+        <div>
+          <label class="sign__label" for="size"> <%= t('collections.show.your_bid') %></label>
+          <input type="text" id='bid_amt' name="bids[crypto_currency]" class="sign__input" placeholder="Enter price for one piece" required/>
+        </div>
+        <div>
+          <label class="sign__label" for="propertie"> <%= t('collections.show.crypto_type') %></label>
+          <%= select_tag("bids[crypto_currency_type]", options_for_select(Erc20Token.select_options), {:id => "bid_currency", :class => "sign__select", :required => true}) %>
+        </div>
+        <% if @collection.multiple? %>
+          <div>
+            <label class="sign__label" for="size"><%= t('collections.show.quantity') %>*</label>
+            <input type="number" id='bid_qty' name="bids[quantity]" class="sign__input validatePresence" placeholder="Enter Quantity" max="<%= @collection.owned_tokens %>" required/>
+          </div>
+        <% end %>
+
+      </div>
+      <div class="flex_box_inputs">
+        <span class="price-amt-content"> <%= t('collections.show.your_balance') %></span>
+        <span class="price-amt-val" id="current_balance"><%= current_balance %> <%= Rails.application.credentials.config[:base_coin] %></span>
+      </div>
+      <div class="flex_box_inputs">
+        <span class="price-amt-content"> <%= t('collections.show.your_bidding_balance') %></span>
+        <span class="price-amt-val"><span id="biding-asset-balance">0 WETH</span></span>
+      </div>
+      <div class="flex_box_inputs">
+        <span class="price-amt-content"> <%= t('collections.show.service_fee') %></span>
+        <span class="price-amt-val"><span id="bid-amt-dp">0</span> ETH</span>
+      </div>
+      <div class="flex_box_inputs">
+        <span class="price-amt-content"> <%= t('collections.show.total_bid_amount') %></span>
+        <span class="price-amt-val"><span id="bid-total-amt-dp">0</span> ETH</span>
+      </div>
+    </div>
+    <div class="modal-footer" style="text-align:center">
+      <a class="btn bidding-element-btn sign__btn triggerBiddingValidation" href="" role="button">Place a Bid</a>
+    </div>
+  <% end %>
+</div>
+</div>
+
+
+<div class="zoom-anim-dialog mfp-hide modal sm_modal" id="placeBid">
+  <h4 class="modal-title share_link_page_h4"> <%= t('shared.follow_steps') %></h4>
+
+  <div class="modal-body pl-30 pr-30">
+    <div class="convertEth">
+      <%= render partial: 'convert_eth' %>
+    </div>
+
+    <div class="approveFlow">
+      <%= render partial: 'approve_bid' %>
+    </div>
+
+    <div class="signMsg">
+      <%= render partial: 'sign_bid' %>
+    </div>
+  </div>
+
+</div>

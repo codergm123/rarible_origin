@@ -1,0 +1,89 @@
+<div class="main-content">
+  <div class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18"><%= t("admin.dashboard.title") %></h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="card mini-stats-wid">
+                <div class="card-body">
+                  <div class="media">
+                    <div class="media-body">
+                      <p class="text-muted font-weight-medium"><%= t("admin.dashboard.users") %></p>
+                      <h4 class="mb-0"><%= @user_count %></h4>
+                    </div>
+                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
+                      <span class="avatar-title">
+                      <i class="fa fa-user font-size-20"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!--<div class="col-md-3">
+              <div class="card mini-stats-wid">
+                <div class="card-body">
+                  <div class="media">
+                    <div class="media-body">
+                      <p class="text-muted font-weight-medium">No. of Users Logged in</p>
+                      <h4 class="mb-0">356</h4>
+                    </div>
+                    <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
+                      <span class="avatar-title rounded-circle bg-primary">
+                      <i class="fa fa-users font-size-20"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>-->
+            <div class="col-md-3">
+              <div class="card mini-stats-wid">
+                <div class="card-body">
+                  <div class="media">
+                    <div class="media-body">
+                      <p class="text-muted font-weight-medium"><%= t("admin.dashboard.token") %></p>
+                      <h4 class="mb-0"><%= @collection_count %></h4>
+                    </div>
+                    <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
+                      <span class="avatar-title rounded-circle bg-primary">
+                      <i class="fa fa-balance-scale font-size-20"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--<div class="col-md-3">
+              <div class="card mini-stats-wid">
+                <div class="card-body">
+                  <div class="media">
+                    <div class="media-body">
+                      <p class="text-muted font-weight-medium">Todays Sale</p>
+                      <h4 class="mb-0">895</h4>
+                    </div>
+                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
+                      <span class="avatar-title">
+                      <i class="fa fa-shopping-cart font-size-20"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="home__content">
+          <h2  class="home_sub_title">The First </h2>
+          <h1 class="home__title">Gaming NFTs <br>Marketplace</h1>
+          <p class="home__text">Discover, collect, and sell exclusive NFTs, straight from the world of gaming</p>
+
+          <div class="home__btns">
+            <a href="<%= search_path%>" class="home__btn home__btn--clr" data-turbolinks="false">Explore</a>
+            <a href="<%= new_collection_path %>" class="home__btn">Create</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center">
+        <div class="banner_sec">
+        <%#= image_tag "/assets/banner.png"%>
+          <div id="header-carousel" class="owl-carousel owl-theme">
+              <% @featured_collections.each do |collection| %>
+                <div class="item">
+                  <%= link_to collection_path(id: collection.address) do %>
+                    <div class="banner-section">
+                      <%= image_tag cover_url(collection), class: 'img-responsive' %>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+
+              <% if @featured_collections.empty? %>
+                <div class="item">
+                  <div class="banner-section">
+                    <%= image_tag "/assets/New-Project.png", class: 'img-responsive' %>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="banner-section">
+                    <%= image_tag "/assets/banner.png", class: 'img-responsive' %>
+                  </div>
+                </div>
+              <% end %>
+
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+</div>

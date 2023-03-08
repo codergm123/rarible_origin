@@ -1,0 +1,5 @@
+<% @activities.each do |activity| %>
+  <% if activity.item.present? %>
+    <%= render activity.item_type.downcase, activity: activity if ["Follow", "Like", "Collection", "Bid"].include?(activity.item_type) %>
+  <% end %>
+<% end %>

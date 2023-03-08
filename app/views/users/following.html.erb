@@ -1,0 +1,295 @@
+<section class="token-constructions">
+  <div class="row ml-0 mr-0 margin-top-minus-20">
+
+    <div class="col-md-12 padding-lr-token-75">
+      <div class="col-md-12 col-sm-12 col-xs-12 dis-padd-lr-0-res">
+        <div class="row ml-0 mr-0 pb-15 pt-30">
+          <div class="col-md-12 col-sm-12 col-xs-12 dis-heading-width">
+            <h3 class="mt-0"><%= t('users.following.following_details') %></h3>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="ul-width-passing">
+            <ul class="nav nav-tabs token-list-details">
+              <li class="active testFollowingAll">
+                <a data-toggle="tab" href="#allFollowings"><%= t('users.following.all') %></a>
+              </li>
+              <li class="testFollowing">
+                <a data-toggle="tab" href="#specFollowings">
+                  <span><%= t('users.following.following') %></span>
+                  <span class="notify">2</span>
+                </a>              
+              </li>
+              <li class="testFollowers">
+                <a data-toggle="tab" href="#specFollowers"><%= t('users.following.followers') %></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12 padding-lr-token-75 pt-50  tabs-content-bg border-custom-style">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="tab-content pt-20">
+
+          <div class="col-md-8 col-sm-8 col-xs-12">
+
+            <div id="allFollowings" class="tab-pane fade in active">
+
+              <div class="scrollbar-activity overall-activities-parent-element" id="style-16">
+                <div class="force-overflow-activity">
+                  <div class="force-overflow-activity-test overall-activities">
+
+                    <% current_user.followees.each do |follow| %>
+                      <div class="activity-details">
+                        <div class="activity-details-images">
+                          <%= image_tag url_for(current_user.profile_image(:icon)), class: 'img-responsive' %>
+                          <i class="fa fa-exchange"></i>
+                        </div>
+                        <div class="activity-details-para">
+                          <h4 class="font-weight-600"><%= current_user.full_name %></h4>
+                          <div class="custom-activity-div">
+                            <span class="para-color"><%= t('users.following.started_following') %></span>
+                            <div class="custom-activity-div-from">
+                              <%= image_tag url_for(follow.profile_image(:icon)), class: 'img-responsive' %>
+                              <span data-toggle="tooltip" data-placement="top" title="<%= follow.full_name %>"><%= follow.full_name %></span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div id="specFollowings" class="tab-pane fade">
+
+              <div class="scrollbar-activity overall-activities-parent-element-specFollowings" id="style-16">
+                <div class="force-overflow-activity">
+                  <div class="force-overflow-activity-test overall-activities-specFollowings">
+
+                    <div class="activity-details">
+                      <div class="activity-details-images">
+                        <img class="img-responsive" src="/assets/default_user-9198208021833100e45e346ad4218be49835d9deafd51b2a281ee58b744cf26b.png">
+                        <i class="fa fa-exchange"></i>
+                      </div>
+                      <div class="activity-details-para">
+                        <h4 class="font-weight-600">0xb599606DF5E2...3E0e</h4>
+                        <div class="custom-activity-div">
+                          <span class="para-color"><%= t('users.following.started_following') %></span>
+                          <div class="custom-activity-div-from">
+                            <img class="img-responsive" src="/assets/default_user-9198208021833100e45e346ad4218be49835d9deafd51b2a281ee58b744cf26b.png">
+                            <span data-toggle="tooltip" data-placement="top" title="0xf586B92ec604...8a15">0xf586B92ec604...8a15</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="activity-details">
+                      <div class="activity-details-images">
+                        <img class="img-responsive" src="/assets/default_user-9198208021833100e45e346ad4218be49835d9deafd51b2a281ee58b744cf26b.png">
+                        <i class="fa fa-exchange"></i>
+                      </div>
+                      <div class="activity-details-para">
+                        <h4 class="font-weight-600">0xb599606DF5E2...3E0e</h4>
+                        <div class="custom-activity-div">
+                          <span class="para-color"><%= t('users.following.started_following') %></span>
+                          <div class="custom-activity-div-from">
+                            <img class="img-responsive" src="/assets/default_user-9198208021833100e45e346ad4218be49835d9deafd51b2a281ee58b744cf26b.png">
+                            <span data-toggle="tooltip" data-placement="top" title="0xf586B92ec604...8a15">0xf586B92ec604...8a15</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div id="specFollowers" class="tab-pane fade">
+
+              <div class="scrollbar-activity overall-activities-parent-element-specFollowers" id="style-16">
+                <div class="force-overflow-activity">
+                  <div class="force-overflow-activity-test overall-activities-specFollowers">
+
+                    <div class="activity-details">
+                      <div class="activity-details-images">
+                        <img class="img-responsive" src="/assets/default_user-9198208021833100e45e346ad4218be49835d9deafd51b2a281ee58b744cf26b.png">
+                        <i class="fa fa-exchange"></i>
+                      </div>
+                      <div class="activity-details-para">
+                        <h4 class="font-weight-600">0xb599606DF5E2...3E0e</h4>
+                        <div class="custom-activity-div">
+                          <span class="para-color"><%= t('users.following.started_following') %></span>
+                          <div class="custom-activity-div-from">
+                            <img class="img-responsive" src="/assets/default_user-9198208021833100e45e346ad4218be49835d9deafd51b2a281ee58b744cf26b.png">
+                            <span data-toggle="tooltip" data-placement="top" title="0xf586B92ec604...8a15">0xf586B92ec604...8a15</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="activity-details">
+                      <div class="activity-details-images">
+                        <img class="img-responsive" src="/assets/default_user-9198208021833100e45e346ad4218be49835d9deafd51b2a281ee58b744cf26b.png">
+                        <i class="fa fa-exchange"></i>
+                      </div>
+                      <div class="activity-details-para">
+                        <h4 class="font-weight-600">0xb599606DF5E2...3E0e</h4>
+                        <div class="custom-activity-div">
+                          <span class="para-color"><%= t('users.following.started_following') %></span>
+                          <div class="custom-activity-div-from">
+                            <img class="img-responsive" src="/assets/default_user-9198208021833100e45e346ad4218be49835d9deafd51b2a281ee58b744cf26b.png">
+                            <span data-toggle="tooltip" data-placement="top" title="0xf586B92ec604...8a15">0xf586B92ec604...8a15</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="activity-details">
+                      <div class="activity-details-images">
+                        <img class="img-responsive" src="/assets/default_user-9198208021833100e45e346ad4218be49835d9deafd51b2a281ee58b744cf26b.png">
+                        <i class="fa fa-exchange"></i>
+                      </div>
+                      <div class="activity-details-para">
+                        <h4 class="font-weight-600">0xb599606DF5E2...3E0e</h4>
+                        <div class="custom-activity-div">
+                          <span class="para-color"><%= t('users.following.started_following') %></span>
+                          <div class="custom-activity-div-from">
+                            <img class="img-responsive" src="/assets/default_user-9198208021833100e45e346ad4218be49835d9deafd51b2a281ee58b744cf26b.png">
+                            <span data-toggle="tooltip" data-placement="top" title="0xf586B92ec604...8a15">0xf586B92ec604...8a15</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="activity-details">
+                      <div class="activity-details-images">
+                        <img class="img-responsive" src="/assets/default_user-9198208021833100e45e346ad4218be49835d9deafd51b2a281ee58b744cf26b.png">
+                        <i class="fa fa-exchange"></i>
+                      </div>
+                      <div class="activity-details-para">
+                        <h4 class="font-weight-600">0xb599606DF5E2...3E0e</h4>
+                        <div class="custom-activity-div">
+                          <span class="para-color"><%= t('users.following.started_following') %></span>
+                          <div class="custom-activity-div-from">
+                            <img class="img-responsive" src="/assets/default_user-9198208021833100e45e346ad4218be49835d9deafd51b2a281ee58b744cf26b.png">
+                            <span data-toggle="tooltip" data-placement="top" title="0xf586B92ec604...8a15">0xf586B92ec604...8a15</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="activity-details">
+                      <div class="activity-details-images">
+                        <img class="img-responsive" src="/assets/default_user-9198208021833100e45e346ad4218be49835d9deafd51b2a281ee58b744cf26b.png">
+                        <i class="fa fa-exchange"></i>
+                      </div>
+                      <div class="activity-details-para">
+                        <h4 class="font-weight-600">0xb599606DF5E2...3E0e</h4>
+                        <div class="custom-activity-div">
+                          <span class="para-color"><%= t('users.following.started_following') %></span>
+                          <div class="custom-activity-div-from">
+                            <img class="img-responsive" src="/assets/default_user-9198208021833100e45e346ad4218be49835d9deafd51b2a281ee58b744cf26b.png">
+                            <span data-toggle="tooltip" data-placement="top" title="0xf586B92ec604...8a15">0xf586B92ec604...8a15</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="activity-details">
+                      <div class="activity-details-images">
+                        <img class="img-responsive" src="/assets/default_user-9198208021833100e45e346ad4218be49835d9deafd51b2a281ee58b744cf26b.png">
+                        <i class="fa fa-exchange"></i>
+                      </div>
+                      <div class="activity-details-para">
+                        <h4 class="font-weight-600">0xb599606DF5E2...3E0e</h4>
+                        <div class="custom-activity-div">
+                          <span class="para-color"><%= t('users.following.started_following') %></span>
+                          <div class="custom-activity-div-from">
+                            <img class="img-responsive" src="/assets/default_user-9198208021833100e45e346ad4218be49835d9deafd51b2a281ee58b744cf26b.png">
+                            <span data-toggle="tooltip" data-placement="top" title="0xf586B92ec604...8a15">0xf586B92ec604...8a15</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-md-4 col-sm-4 col-xs-12">
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="col-md-12 padding-lr-token-75">
+      <div class="row">
+        <div class="col-md-7">
+          
+        </div>
+      </div>
+    </div>
+ -->
+  </div>
+</section>
+<script type="text/javascript">
+  setTimeout(function(){
+      var testFollowthree = $('.force-overflow-activity-test.overall-activities').height();
+    if (testFollowthree > 450) {
+      $(".scrollbar-activity.overall-activities-parent-element").addClass("introFollowing");
+    }
+  }, 500);
+  $('#allFollowings').css('display','block');
+  $('#specFollowings').css('display','none');
+  $('#specFollowers').css('display','none');
+
+  $('.testFollowing').click(function(){
+    var testFollowTwo = $('.force-overflow-activity-test.overall-activities-specFollowings').height();
+    setTimeout(function(){
+      if (testFollowTwo > 450) {
+        $(".scrollbar-activity.overall-activities-parent-element-specFollowings").addClass("introFollowing");
+      }
+    }, 500);
+    $('#allFollowings').css('display','none');
+    $('#specFollowings').css('display','block');
+    $('#specFollowers').css('display','none');
+  });
+
+  $('.testFollowers').click(function(){
+    var testFollowFour = $('.force-overflow-activity-test.overall-activities-specFollowers').height();
+    setTimeout(function(){
+      if (testFollowFour > 450) {
+        $(".scrollbar-activity.overall-activities-parent-element-specFollowers").addClass("introFollowing");
+      }
+    }, 500);
+    $('#allFollowings').css('display','none');
+    $('#specFollowings').css('display','none');
+    $('#specFollowers').css('display','block');
+  });
+
+  $('.testFollowingAll').click(function(){
+    var testFollowTwo = $('.force-overflow-activity-test.overall-activities').height();
+    setTimeout(function(){
+      if (testFollowTwo > 450) {
+        $(".scrollbar-activity.overall-activities-parent-element").addClass("introFollowing");
+      }
+    }, 500);
+    $('#allFollowings').css('display','block');
+    $('#specFollowings').css('display','none');
+    $('#specFollowers').css('display','none');
+  });
+</script>

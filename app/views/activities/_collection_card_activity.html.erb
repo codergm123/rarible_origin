@@ -1,0 +1,60 @@
+<% if activity.event == 'create' ||
+        (activity.event == 'update' &&
+                Collection.is_valid_activity(activity) &&
+                (!activity.changeset["state"].present? ||
+                        (activity.changeset["state"].present? && activity.changeset["state"] != ["pending", "approved"]))) %>
+
+    <div class="asset__action asset__action--verified">
+      <% if activity.event == "create" && activity.item.present? %>
+
+          <%= link_to user_path(activity.item.creator.address), class:"user_img" do %>
+              <%= image_tag url_for(activity.item.creator.profile_image) %>
+               <% if activity.item.creator.is_verified %>
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <% end %>
+          <% end %>
+          <p class="content_details">Minted <%= time_ago_in_words(activity.created_at) %> ago <br>by @<%= link_to activity.item.creator.full_name, user_path(activity.item.creator.address)%> </p>
+
+      <% else %>
+          <% owner_name = activity.next ? activity.next.reify.owner.full_name : activity.item.owner.full_name %>
+          <% if activity.event == "update" %>
+              <% if activity.changeset.keys.include?("owner_id") %>
+                 <% activity_dup = activity.dup %>
+                  <%= link_to user_path(activity.reify.owner.address), class:"user_img" do %>
+                      <%= image_tag url_for(activity.reify.owner.profile_image) %>
+                      <% if activity.reify.owner.is_verified %>
+                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <% end %>
+                  <% end %>
+                  <p class="content_details">Transfered <%= time_ago_in_words(activity.created_at) %> ago from <%= activity.reify.owner.full_name %> <br>to @<%= link_to owner_name, user_path(activity_dup.item.owner.address)%> </p>
+
+              <% elsif activity.changeset.keys.include?("instant_sale_price") %>
+
+                  <%= link_to user_path(activity.item.owner.address), class:"user_img" do %>
+                      <%= image_tag url_for(activity.item.owner.profile_image) %>
+                      <% if activity.item.owner.is_verified %>
+                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <% end %>
+                  <% end %>
+                  <p class="content_details">Price updated at <%= time_ago_in_words(activity.created_at) %> ago to <%= activity.changeset["instant_sale_price"].last %> <br>by @<%= link_to owner_name, user_path(activity.item.owner.address)%> </p>
+              <% elsif activity.changeset.keys.include?("put_on_sale") %>
+                  <%= link_to user_path(activity.item.owner.address), class:"user_img" do %>
+                      <%= image_tag url_for(activity.item.owner.profile_image) %>
+                      <% if activity.item.owner.is_verified %>
+                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <% end %>
+                  <% end %>
+                  <p class="content_details">Put on sale on <%= time_ago_in_words(activity.created_at) %> ago <br>by @<%= link_to owner_name, user_path(activity.item.owner.address)%> </p>
+              <% elsif activity.changeset["state"].present? && activity.changeset["state"] == ["approved", "burned"] %>
+                  <%= link_to user_path(activity.item.owner.address), class:"user_img" do %>
+                      <%= image_tag url_for(activity.item.owner.profile_image), class: 'img-responsive' %>
+                      <% if activity.item.owner.is_verified %>
+                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <% end %>
+                      <% end %>
+                      <p class="content_details">Burned at <%= time_ago_in_words(activity.created_at) %> ago <br>by @<%= link_to owner_name, user_path(activity.item.owner.address)%> </p>
+                  <% end %>
+              <% end %>
+          <% end %>
+          </div>
+      <% end %>

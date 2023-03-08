@@ -1,0 +1,20 @@
+<div class="my-explore-div featured-user-entry">
+  <div class="box-explore-bids">
+    <div class="explore-bids-img" style="background-image: url('<%= cover_url(@collection) %>');">
+      <%= image_tag cover_url(@collection), class: "img-responsive" %>
+    </div>
+    <div class="explore-bid-opt-img">
+    </div>
+    <div class="explore-bids-content">
+      <h4><%= @collection.title %></h4>
+      <p><b><%= @collection.title_desc %></b></p>
+      <% if @collection.max_bid %>
+        <p><%= t("shared.highest_bid") %><b><%= @collection.max_bid.value %></b></p>
+      <% end %>
+    </div>
+
+    <div class="remove-button">
+      <button class="btn btn-sm featured-user-remove btn-danger" data-id="<%= @collection.id %>" type="button"><%= t("shared.delete") %> <i class="far fa-trash-alt"></i></button>
+    </div>
+  </div>
+</div>

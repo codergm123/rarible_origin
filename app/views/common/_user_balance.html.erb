@@ -1,0 +1,17 @@
+<a class="dropdown-toggle profile-section" data-toggle="dropdown" href="javascript:void(0);">
+  <div class="profile-list">
+    <div class="profile-list-img">
+      <%= image_tag url_for(current_user.profile_image(:thumb)), class: "img-responsive" %>
+      <% if current_user.is_verified %>
+        <i class="fa fa-check-circle" aria-hidden="true"></i>
+      <% end %>
+    </div>
+    <div class="profile-list-content">
+      <h5><span class="curBalance"><%= current_balance %></span> <%= Rails.application.credentials.config[:base_coin] %></h5>
+      <p class="para-color"><%= current_user.masked_address %></p>
+    </div>
+    <div class="profile-list-icon">
+      <i class="fa fa-angle-down"></i>
+    </div>
+  </div>
+</a>

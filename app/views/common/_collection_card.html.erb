@@ -1,0 +1,39 @@
+<% if current_user %>
+  <%= react_component("collections/like", address: current_user.address, likes: @likes, collectionId: collection.id) %>
+<% else %>
+  <div class="explore-bids-icon-heart no-wishlist">
+    <i class="fa fa-heart"></i>
+  </div>
+<% end %>
+
+<%= link_to collection_path(collection.address) do %>
+  <div class="explore-bids-img" style="background-image: url('<%= cover_url(collection) %>');">
+    <%= image_tag cover_url(collection), class: "img-responsive" %>
+  </div>
+<% end %>
+
+<div class="explore-bid-opt-img">
+  <%= render partial: 'common/collection_owner_imgs', locals: {collection: collection} %>
+
+  <div class="explore-bid-opt-icon">
+    <div class="dropdown">
+      <div class="more-list dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-ellipsis-v"></i>
+      </div>
+      <ul class="dropdown-menu">
+        <% if collection.instant_sale_enabled %><li><%= link_to t('shared.buy_now'), collection_path(collection.address), anchor: '#Buy-modal' %></li><% end %>
+        <% if collection.put_on_sale %><li><a href="<%= collection_path(collection.address) %>"><%= t('collections.show.place_a_bid')%></a></li><% end %>
+        <li><a href="#"><%= t('collections.show.report')%></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="explore-bids-content">
+  <div>
+    <h4><%= collection.title %></h4>
+    <p><%= collection.title_desc %></p>
+  </div>
+  <% if collection.max_bid %>
+    <p class="bid_status">Highest bid <b><%= collection.max_bid.value %></b></p>
+  <% end %>
+</div>

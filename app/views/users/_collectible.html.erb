@@ -1,0 +1,38 @@
+<div class="my-explore-div">
+  <div class="box-explore-bids">
+      <% if current_user %>
+        <%= react_component("collections/like", address: @user.address, likes: @liked.pluck(:collection_id), collectionId: collection.id) %>
+      <% else %>
+        <div class="explore-bids-icon-heart no-wishlist">
+          <i class="fa fa-heart"></i>
+        </div>
+      <% end %>
+    <%= link_to collection_path(collection.address) do %>
+      <div class="explore-bids-img" style="background-image: url('<%= cover_url(collection) %>');">
+        <%= image_tag cover_url(collection), class: "img-responsive" %>
+      </div>
+    <% end %>
+    <div class="explore-bid-opt-img">
+      <%= render partial: 'common/collection_owner_imgs', locals: {collection: collection} %>
+      <!-- <div class="explore-bid-opt-icon">
+        <div class="dropdown">
+          <div class="more-list dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-ellipsis-v"></i>
+          </div>
+          <ul class="dropdown-menu">
+            <li><a href="#">Place a bid</a></li>
+            <li><a href="#">View on OpenSea</a></li>
+            <li><a href="#">Report</a></li>
+          </ul>
+        </div>
+      </div> -->
+    </div>
+    <div class="explore-bids-content">
+      <h4><%= collection.title %></h4>
+      <p><b><%= collection.title_desc %></b></p>
+      <% if collection.max_bid %>
+        <p><%= t('collections.show.highest_bid')%><b><%= collection.max_bid.value %></b></p>
+      <% end %>
+    </div>
+  </div>
+</div>

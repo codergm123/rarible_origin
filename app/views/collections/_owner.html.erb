@@ -1,0 +1,12 @@
+<a href="<%= collection_path(collection.address)%>">
+  <div class="token-collections">
+    <div class="token-collections-images">
+      <%= image_tag url_for(collection.owner.profile_image(:icon)), class: 'img-responsive' %>
+      <i class="fa fa-check-circle"></i>
+    </div>
+    <div class="token-collections-details">
+      <p class="para-color"><%= t('collections.show.owner_token', token: (collection.owned_tokens || 1 ))%></p>
+      <h4 data-toggle="tooltip" data-placement="top" title="<%= collection.owner.address %>"><%= collection.owner.masked_address(18, 4) %></h4>
+    </div>
+  </div>
+</a>

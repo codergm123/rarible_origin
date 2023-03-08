@@ -1,0 +1,19 @@
+<% if @errors.present? %>
+  $("#collectionCreateForm :input").prop("disabled", false);
+  <%= custom_error_flash(@errors, 'error') %>
+<% else %>
+  <% contract_type = @collection.contract_type || (@collection.multiple? ? 'nft1155' : 'nft721') %>
+  <% if @collection.nft_contract_id.present? %>
+    $('#collection_contract_address').val("<%= @collection.nft_contract.address %>")
+  <% end %>
+  $('#collection_contract_type').val("<%= contract_type %>")
+  $('#collection_id').val("<%= @collection.address %>")
+  $('#collection_token_uri').val("<%= @metadata_hash %>")
+  $('#collection_supply').val("<%= @collection.no_of_copies %>")
+  $('#collection_royalty_fee').val("<%= @collection.royalty_fee %>")
+  <% if @collection.shared? %>
+    initCollectionCreate("<%= @collection.nft_contract.address %>", '<%= contract_type %>')
+  <% else %>
+    startContractDeploy("<%= contract_type %>")
+  <% end %>
+<% end %>

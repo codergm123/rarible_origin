@@ -1,0 +1,71 @@
+<div class="main-content">
+  <div class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box d-flex align-items-center justify-content-between">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h4 class="card-title"><%= t('admin.users.reports.title') %></h4>
+                </div>
+              </div>
+              <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <thead>
+                  <tr>
+                    <!-- <th><%#= t("admin.users.reports.id") %></th>
+                    <th><%#= t("admin.users.reports.address") %></th> -->
+                    <th><%= t("admin.users.reports.user") %></th>
+                    <th><%= t("admin.users.reports.reportee") %></th>
+                    <th><%= t("admin.users.reports.message") %></th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if @reports.present? %>
+                    <% @reports.each do |report| %>
+                      <tr>
+                        <!-- <td><%#= report.id %></td>
+                        <td><%#= report.address %></td> -->
+                        <td><%= report.user.name %></td>
+                        <td><%= report.created_by.name %></td>
+                        <td><%= report.message %></td>
+                        <td>
+                          <% if report.user.is_active %>
+                            <%= link_to t("admin.users.index.block_link"), admin_user_path(report.user), method: :delete, class: "pr-2" %>
+                          <% end %>
+                          <% unless report.user.is_active %>
+                            <%= link_to t("admin.users.index.enable_link"), enable_admin_user_path(report.user), class: "pr-2" %>
+                          <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  <% else %>
+                    <tr>
+                      <td colspan="6"><%= t(:no_records, scope: :admin) %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="flickr_pagination">
+            <%= will_paginate @reports %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

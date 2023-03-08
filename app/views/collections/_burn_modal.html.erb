@@ -1,0 +1,23 @@
+<div id="burnModal" class="zoom-anim-dialog mfp-hide modal sm_modal">
+  <button class="modal__close md_cls" type="button"><i class="fas fa-times"></i></button>
+  <h4 class="modal-title share_link_page_h4"><%= t('collections.show.burn_token')%></h4>
+  <div class="modal-body pt-10 pb-10">
+    <p class="buynow-content">
+      <span class="innertitle"><%= t('collections.show.burn_token_alert')%></span>
+    </p>
+  </div>
+  <div class="modal-footer" style="text-align:right">
+    <a class="btn buy-now bidding-element-btn triggerBurn theme-btn" href="" role="button"><%= t('collections.show.burn_token')%></a>
+    <a class="bidding-element-btn secondary-btn" data-dismiss="modal" role="button"><%= t('shared.cancel')%></a>
+  </div>
+</div>
+
+<div id="burnToken" class="zoom-anim-dialog mfp-hide modal sm_modal">
+  <button class="modal__close md_cls" type="button"><i class="fas fa-times"></i></button>
+  <h4 class="modal-title share_link_page_h4"><%= t('shared.follow_steps')%></h4>
+  <div class="modal-body">
+    <div class="convertEth">
+      <%= render partial: 'burning' %>
+    </div>
+  </div>
+</div>

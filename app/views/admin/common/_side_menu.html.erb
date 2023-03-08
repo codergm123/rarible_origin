@@ -1,0 +1,72 @@
+<div class="vertical-menu">
+  <div data-simplebar class="h-100">
+    <div id="sidebar-menu">
+      <ul class="metismenu list-unstyled" id="side-menu">
+        <li class="menu-title" key="t-menu"><%= t("admin.side_menu.menu") %></li>
+        <li>
+          <a href="<%= admin_dashboard_path %>" class="waves-effect">
+          <i class="bx bxs-dashboard"></i>
+          <span key="t-dashboards"><%= t("admin.side_menu.title") %></span>
+          </a>
+        </li>
+        <li class="menu-title" key="t-apps"><%= t("admin.side_menu.users") %></li>
+        <li>
+          <a href="javascript: void(0);" class="has-arrow waves-effect">
+          <i class="bx bxs-user-detail"></i>
+          <span key="t-invoices"><%= t("admin.side_menu.users") %></span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+            <li><a href="<%= admin_users_path %>" key="t-invoice-list"><%= t("admin.side_menu.list_users") %></a></li>
+            <li><a href="<%= reports_admin_users_path %>" key="t-invoice-list"><%= t("admin.side_menu.report_users") %></a></li>
+          </ul>
+        </li>
+
+        <li class="menu-title" key="t-apps"><%= t("admin.side_menu.categories") %></li>
+        <li>
+          <a href="<%= admin_categories_path %>" class="waves-effect">
+          <i class="bx bxs-dashboard"></i>
+          <span key="t-dashboards"><%= t("admin.side_menu.categories") %></span>
+          </a>
+        </li>
+
+        <li class="menu-title" key="t-apps"><%= t("admin.side_menu.fees") %></li>
+        <li>
+          <a href="<%= admin_fees_path %>" class="waves-effect">
+          <i class="bx bxs-dashboard"></i>
+          <span key="t-dashboards"><%= t("admin.side_menu.fees") %></span>
+          </a>
+        </li>
+
+        <li class="menu-title" key="t-apps"><%= t("admin.side_menu.transactions") %></li>
+        <li>
+          <a href="<%= admin_transactions_path %>" class="waves-effect">
+          <i class="bx bxs-dashboard"></i>
+          <span key="t-dashboards"><%= t("admin.side_menu.transactions") %></span>
+          </a>
+        </li>
+
+        <li class="menu-title" key="t-apps"><%= t("admin.side_menu.settings") %></li>
+        <li>
+          <a href="javascript: void(0);" class="has-arrow waves-effect">
+          <i class="bx bxs-user-detail"></i>
+          <span key="t-invoices"><%= t("admin.side_menu.dashboard_settings") %></span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+            <%if false%>
+              <li><a href="<%= admin_featured_users_path %>" key="t-invoice-list"><%= t("admin.side_menu.featured_users") %></a></li>
+            <%end%>
+            <li><a href="<%= admin_featured_collections_path %>" key="t-invoice-list"><%= t("admin.side_menu.featured_collections") %></a></li>
+          </ul>
+        </li>
+        
+        <!-- <li class="menu-title" key="t-apps">Logout</li>
+        <li>
+          <%#= link_to destroy_admin_admin_user_session_path, method: :delete do %>
+            <i class="bx bx-log-out-circle"></i>
+            <span key="t-chat">Logout</span>
+          <%# end %>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</div>

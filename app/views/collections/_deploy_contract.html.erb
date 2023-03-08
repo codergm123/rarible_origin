@@ -1,0 +1,16 @@
+<div class="follow-step-block">
+  <div class="follow-step-icon">
+    <i class="deployProgress fa fa-spinner fa-pulse"></i>
+    <i class="deployDone fa fa-check-circle hide"></i>
+    <i class="deployRetry fa fa-check-circle hide grey"></i>
+  </div>
+  <div class="follow-step-content">
+    <h3><%= t('collections.form.deploy_contract')%></h3>
+    <p class="para-color"><%= t('collections.form.deploy_contract_msg')%></p>
+  </div>
+  <div class="follow-step-button">
+    <a href="javascript:void(0)" class="deployProgress disabledLink"><%= t('shared.in_progress')%></a>
+    <a href="javascript:void(0)" class="deployDone hide"><%= t('shared.done')%></a>
+    <a href="javascript:void(0)" class="deployRetry hide"><%= t('shared.try_again')%></a>
+  </div>
+</div>

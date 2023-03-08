@@ -1,0 +1,6 @@
+<% if @errors.present? %>
+  <%= custom_error_flash(@errors, 'error') %>
+<% else %>
+  <% flash.keep[:notice] = 'Featured Collections Successfully created.' %>
+  window.location.replace("<%= admin_featured_collections_path %>");
+<% end %>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= Rails.application.credentials.config[:app_name] %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'admin', media: 'all' %>
+    <%#= javascript_pack_tag 'application' %>
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css' %>
+  </head>
+
+  <body data-sidebar="dark">
+
+    <div class="admin-notifiers">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+    
+    <% if current_admin_admin_user %>
+      <%= render "admin/common/header" %>
+      <%= render "admin/common/side_menu" %>
+    <% end %>
+    <div id="layout-wrapper">
+      <%= yield %>
+      <%= render "admin/common/footer" %>
+    </div>
+    <%= toastr_flash %>
+  </body>
+    <%= javascript_include_tag 'admin' %>
+    <%= javascript_include_tag params[:controller].gsub("admin/", "") if ::Rails.application.assets.find_asset("#{params[:controller].gsub("admin/", "")}.js") %>
+</html>

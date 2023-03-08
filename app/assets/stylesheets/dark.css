@@ -1,0 +1,15 @@
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --body-color: #44444d;
+  --body-bg: #f8f8f8;
+  --submit-search: #8a8686;
+  --searchInput: #948c8c;
+  --top-sell-buy-box: #ccc;
+  --theme-color: #ea5587;
+  --box-default-color: #464646;
+  --no-wishlist-bg: #9c9c9c96;
+  --ordinary-theme: #fce5ef;
+  --ordinary-icon-color: #686869;
+  --checked-ele: #adadad;
+}

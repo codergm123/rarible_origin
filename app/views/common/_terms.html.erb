@@ -1,0 +1,18 @@
+<div id="terms-and-condition" class="zoom-anim-dialog mfp-hide modal sm_modal">
+  <button class="modal__close md_cls" type="button"><i class="fas fa-times"></i></button>
+  <h4 class="modal-title"><%= t('footer.tc') %></h4>
+
+  <div class="modal-body pl-30 pr-30">
+    <%= hidden_field_tag "account", nil %>
+    <%= hidden_field_tag "eth_balance_tc", nil %>
+    <%= hidden_field_tag "network_type", nil %>
+
+    <input class="styled-checkbox" id="condition1" type="checkbox" name="condition1" value="Bike">
+    <label for="condition1"><%= t('header.age_limit') %></label>
+
+    <input class="styled-checkbox" id="condition2" type="checkbox" name="condition2" value="Bike">
+    <label for="condition2"><%= t('header.tc_acceptence') %></label>
+
+    <a href="javascript:void(0);" onclick="window.proceedWithLoad()" class="theme-btn proceedBtn"><%= t('header.proceed') %></a>
+  </div>
+</div>

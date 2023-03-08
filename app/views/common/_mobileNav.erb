@@ -1,0 +1,48 @@
+<ul class="mobile-profile-notification">
+    <li class="dropdown mobile-notification">
+        <%#= render "common/notification" %>
+        <a class="view-notification dropdown-toggle bell-icon" data-toggle="dropdown" href="javascript:void(0);">
+        <i class="fa fa-bell"></i>
+        </a>
+        <div class="dropdown-menu community-ddm notification-list dis-mobile-notification">
+            <h4 class="heading"><i class="fa fa-bell"></i>&nbsp;Notifications</h4>
+            <ul class="user-notification-list ">
+            </ul>
+        </div>
+    </li>
+
+    <li class="dropdown mobile-profile">
+        <%= render partial: 'common/user_balance' %>
+        <ul class="dropdown-menu community-ddm notification-list">
+        <li class="username"><%= current_user.masked_address %></li>
+        <li class="divider"></li>
+        <li>
+            <a href="<%= my_items_path %>">
+            My Items
+            </a>
+        </li>
+        <li>
+            <%= link_to "Edit Profile", edit_user_path(current_user) %>
+        </li>
+<!--        <li>-->
+<!--            <a>-->
+<!--            <span>Dark theme</span>-->
+<!--            <span class="dark-theme">-->
+<!--                <label class="switch">-->
+<!--                <input type="checkbox" name="put_sale" checked="">-->
+<!--                <span class="slider dark-theme-slider round"></span>-->
+<!--                </label>-->
+<!--            </span>-->
+<!--            </a>-->
+<!--        </li>-->
+        <li>
+            <a href="" onclick="window.disconnect(<%= current_user.address %>)">Disconnect</a>
+            <% if session[:wallet] == "myEatherWallet" %>
+            <%#= react_component("myEthWallet/connect", address: current_user.address) %>
+            <% else %>
+            <%#= react_component("walletConnect/walletConnect", props: {address: current_user.address}) %>
+            <% end %>
+        </li>
+        </ul>
+    </li>
+</ul>

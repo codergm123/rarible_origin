@@ -1,0 +1,72 @@
+<div class="main-content">
+  <div class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box d-flex align-items-center justify-content-between">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h4 class="card-title"><%= t("admin.fees.index.title") %></h4>
+                </div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                  <%= link_to t("admin.fees.index.new_fee"), new_admin_fee_path, class: "float-right" %>
+                </div>
+              </div>
+              <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <thead>
+                  <tr>
+                    <!-- <th><%#= t("admin.fees.index.id") %></th> -->
+                    <th><%= t("admin.fees.index.name") %></th>
+                    <th><%= t("admin.fees.index.fee_type") %></th>
+                    <!--<th><%= t("admin.fees.index.price") %></th>-->
+                    <th><%= t("admin.fees.index.percentage") %></th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if @fees.present? %>
+                    <% @fees.each do |fee| %>
+                      <tr>
+                        <!-- <td><%#= fee.id %></td> -->
+                        <td><%= fee.name %></td>
+                        <td><%= fee.fee_type %></td>
+                        <!--<td><%= fee.price %></td>-->
+                        <td><%= fee.percentage %></td>
+                        <td>
+                          <%= link_to "Show", admin_fee_path(fee), class: "pr-2" %>
+                          <%= link_to "Edit", edit_admin_fee_path(fee), class: "pr-2" %>
+                          <%= link_to "Delete", admin_fee_path(fee), method: :delete, class: "pr-2" %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  <% else %>
+                    <tr>
+                      <td colspan="6"><%= t(:no_records, scope: :admin) %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="flickr_pagination">
+            <%= will_paginate @fees %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

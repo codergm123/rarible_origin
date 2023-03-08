@@ -1,0 +1,102 @@
+<div class="main-content">
+  <div class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box d-flex align-items-center justify-content-between">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h4 class="card-title">><%= t('admin.users.index.title') %></h4>
+                </div>
+                <div class="col-sm-6">
+                  <%= form_tag(admin_users_path, method: :get, class: '') do %>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <input name="name" type="text" id="name" placeholder="Name:" style="height:34px;" value="<%=params[:name]%>"/>
+                      </div>
+                      <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary btn-no-style">Search</button>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <thead>
+                  <tr>
+                    <!-- <th><%#= t("admin.users.index.id") %></th> -->
+                    <th><%= t("admin.users.index.name") %></th>
+                    <th><%= t("admin.users.index.address") %></th>
+                    <th><%= t("admin.users.index.bio") %></th>
+                    <th><%= t("admin.users.index.personal_url") %></th>
+                    <th><%= t("admin.users.index.is_verified") %></th>
+                    <th>Action</th>
+                    <th><%= t("admin.users.index.is_approved") %></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if @users.present? %>
+                    <% @users.each do |user| %>
+                      <tr>
+                        <!-- <td><%#= user.id %></td> -->
+                        <td><%= user.name %></td>
+                        <td><%= user.address %></td>
+                        <td><%= user.bio %></td>
+                        <td><%= user.personal_url %></td>
+                        <td><%= boolean_str(user.is_verified) %></td>
+                        <td>
+                          <%= link_to "#{Rails.application.credentials.config[:app_name]}", collections_admin_user_path(user), class: "pr-2" %>
+                          <%= link_to "Show", admin_user_path(user), class: "pr-2" %>
+                          <%= link_to "Edit", edit_admin_user_path(user), class: "pr-2" %>
+
+                          <% unless user.is_verified %>
+                            <%= link_to t("admin.users.index.verify_link"), verify_admin_user_path(user), class: "pr-2" %>
+                          <% end %>
+
+                          <% if user.is_active %>
+                            <%= link_to t("admin.users.index.block_link"), admin_user_path(user), method: :delete, class: "pr-2" %>
+                          <% end %>
+
+                          <% unless user.is_active %>
+                            <%= link_to t("admin.users.index.enable_link"), enable_admin_user_path(user), class: "pr-2" %>
+                          <% end %>
+                        </td>
+                        <td>
+                          <% if user.is_approved %>
+                            <%= link_to t("admin.users.index.deny_link"), deny_admin_user_path(user), class: "pr-2", data: {confirm: 'Are you Sure? NFT create and all other actions will be revoked.'} %>
+                          <% else %>
+                            <%= link_to t("admin.users.index.approve_link"), approve_admin_user_path(user), class: "pr-2" %>
+                          <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  <% else %>
+                    <tr>
+                      <td colspan="8"><%= t(:no_records, scope: :admin) %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="flickr_pagination">
+            <%= will_paginate @users %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<% @data.each do |like| %>
+  <% next if like.collection.blank? %>
+  <%= render "liked", collection: like.collection, like_ids: @liked.pluck(:collection_id) %>
+<% end %>

@@ -1,0 +1,12 @@
+<div class="asset__action asset__action--verified">
+  <%= render partial: 'common/user_img', locals: {user: bid.user} %>
+  <p class="content_details">Bid placed for <b><%= bid.crypto_currency %> <%= bid.crypto_currency_type %></b>
+    <%= time_ago_in_words(bid.created_at) %>ago <br>
+    by <%= link_to bid.user.full_name, user_path(bid.user.address) %>
+  </p>
+  <% if is_collection_owner %>
+    <p class="para-color execute_btn">
+      <%= link_to 'Execute', 'javascript:void(0)', class: "execute-btn execButton", bidId: bid.id, price: bid.amount, qty: bid.quantity, bidUser: bid.user.full_name, bidDetail: bid.desc, bidSymbol: bid.erc20_token&.symbol, erc20ContractAddress: bid.erc20_token&.address, nftContractAddress: bid&.collection&.nft_contract&.address %>
+    </p>
+  <% end %>
+</div>

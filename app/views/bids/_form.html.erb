@@ -1,0 +1,47 @@
+<%= form_with(model: bid) do |form| %>
+  <% if bid.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bid.errors.count, "error") %> prohibited this bid from being saved:</h2>
+
+      <ul>
+        <% bid.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :collection_id %>
+    <%= form.number_field :collection_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :crypto_currency_type %>
+    <%= form.text_field :crypto_currency_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :crypto_currency %>
+    <%= form.text_field :crypto_currency %>
+  </div>
+
+  <div class="field">
+    <%= form.label :register_date %>
+    <%= form.datetime_select :register_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_active %>
+    <%= form.check_box :is_active %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

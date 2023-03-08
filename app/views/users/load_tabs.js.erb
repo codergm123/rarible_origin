@@ -1,0 +1,25 @@
+// $('.user-collection-section').data("tab", "<%= @tab %>")
+
+<% if @page_no.to_i > 1 %>
+  <% if @tab.nil? || @tab.blank? %>
+    $('.user-collection-section .active .collection-section').append('<%= j(render partial: "collection_section") %>');
+  <% elsif @tab == "collectibles" %>
+    $('.user-collection-section .active .collection-section').append('<%= j(render partial: "collection_section") %>');
+  <% elsif @tab == "created" %>
+    $('.user-collection-section .active .collection-section').append('<%= j(render partial: "collection_section") %>');
+  <% elsif @tab == "liked" %>
+    $('.user-collection-section .active .collection-section').append('<%= j(render partial: "like_section") %>');
+  <% end %>
+<% else %>
+  $('.user-collection-section .active .collection-section').html('<%= j(render partial: "collection_section") %>');
+<% end %>
+
+$(".loading-gif").hide();
+$('body').css('overflow','auto');
+
+$(".user-load-more").data("page-no", "<%= @page_no.to_i + 1 %>")
+$(".user-load-more").data("tab", "<%= @tab %>")
+
+<% if @page_no.to_i == @data.total_pages %>
+  $(".user-load-more").closest(".row").hide()
+<% end %>

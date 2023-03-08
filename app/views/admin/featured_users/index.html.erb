@@ -1,0 +1,66 @@
+<div class="main-content">
+  <div class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box d-flex align-items-center justify-content-between">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h4 class="card-title"><%= t("admin.featured_users.index.title") %></h4>
+                </div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                  <%= link_to t("admin.featured_users.index.add_new"), new_admin_featured_user_path, class: "float-right" %>
+                </div>
+              </div>
+              <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <thead>
+                  <tr>
+                    <!-- <th><%#= t("admin.featured_users.index.id") %></th> -->
+                    <th><%= t("admin.featured_users.index.name") %></th>
+                    <th><%= t("admin.featured_users.index.address") %></th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if @featured_users.present? %>
+                    <% @featured_users.each do |fuser| %>
+                      <tr>
+                        <!-- <td><%#= fuser.id %></td> -->
+                        <td><%= fuser.user.name %></td>
+                        <td><%= fuser.user.address %></td>
+                        <td>
+                          <%= link_to t('shared.destroy'), admin_featured_user_path(fuser), method: :delete, class: "pr-2" %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  <% else %>
+                    <tr>
+                      <td colspan="4"><%= t(:no_records, scope: :admin) %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="flickr_pagination">
+            <%= will_paginate @featured_users %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

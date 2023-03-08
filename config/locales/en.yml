@@ -1,0 +1,468 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
+en:
+  activerecord:
+    attributes:
+      collection:
+        attachment: Collectible file
+
+  notifications:
+    put_on_sale: Listed by %{owner_name}
+    price_updated: Price updated for %{price} by %{owner_name}
+    ownership_transfer: Transferred to %{buyer_name} by %{owner_name}
+    new_bid: Offered Bid 0.1 Eth by %{buyer_name}
+    bid_accept: Your bid have been accepted by %{owner_name}
+    expire_bid: Your bid expired by %{owner_name}
+    profile_verified: Profile successfully verified
+    burn_token: Burned %{collection_name} by %{owner_name}
+    nft_sold: NFT %{collection_name} sold successfully
+    following: User %{user_name} started following
+  admin:
+    no_records: No Records Found
+    dashboard:
+      users: No. of Users
+      token: No. of token
+      title: Dashboard
+    side_menu:
+      menu: Menu
+      title: Dashboard
+      users: Users
+      list_users: List Users
+      report_Users: Report Users
+      categories: Categories
+      fees: Fees
+      transactions: Transactions
+      settings: Settings
+      dashboard_settings: Dashboard Settings
+      featured_users: Featured Users
+      featured_collections: Featured Collections
+    users:
+      index:
+        title: User List
+        address: Address
+        name: Account Name
+        bio: Bio
+        personal_url: Personal URL
+        is_verified: Verified
+        is_approved: Approved
+        approve_link: Approve
+        deny_link: Deny
+        verify_link: Verify
+        block_link: Block
+        enable_link: Enable
+      show:
+        title: View User
+        address: Address
+        name: Display Name
+        bio: Bio
+        personal_url: Custom URL
+        is_verified: Verified
+        twitter_link: Twitter Username
+      form:
+        name: Display Name
+        bio: Tell about yourself in a few words
+        attachment: User Profile Picture
+        personal_url: Enter custom URL
+        is_verified: Verify User
+        custom_url: Custom URL
+        twitter_link: Twitter Username
+      reports:
+        title: Reports
+        user: User
+        reportee: Reportee
+        message: Message 
+      confirmation:
+        resend_confirmation: Resend confirmation instructions
+        email: Email
+      mailer:
+        account_confirmation: You can confirm your account email through the link below
+        confirm: Confirm my account
+        email_changed_unconfirmed: "We're contacting you to notify you that your email is being changed to %{unconfirmed_email }."
+        email_changed: "We're contacting you to notify you that your email has been changed to %{email }."
+        pwd_changed: We're contacting you to notify you that your password has been changed.
+    categories:
+      index:
+        title: Category List
+        new_category: New Category
+        name: Category Name
+        is_active: Active
+      show:
+        title: View Category
+        name: Name
+        is_active: Active
+      form:
+        name: Category Name
+        is_active: Active
+    fees:
+      index:
+        title: Fee List
+        new_category: New Fee
+        name: Fee Name
+        fee_type: Fee Type
+        price: Fee Price
+        percentage: Fee Percentage %
+      show:
+        title: View Fee
+        name: Fee Name
+        fee_type: Fee Type
+        price: Fee Price
+        percentage: Fee Percentage %
+      form:
+        name: Fee Name
+        fee_type: Fee Type
+        price: Fee Price
+        percentage: Fee Percentage %
+    featured_users:
+      index:
+        title: Featured Users List
+        add_new: Add New
+        id: ID
+        name: Name
+        address: address
+      form:
+        search_user: Search User
+        search_user_label: User Address
+        add: Add
+        submit: Submit
+        title: New Featured User
+    featured_collections:
+      index:
+        title: Featured Collections List
+        add_new: Add New
+        id: ID
+        name: Name
+        address: address
+      form:
+        search_collection: Search NFT
+        add: Add
+        submit: Submit
+        title: New Featured Collection
+    transactions:
+      index:
+        title: Transactions List
+        id: ID
+        buyer: Buyer
+        seller: Seller
+        currency: Currency
+        currency_type: Currency Type
+        channel: Payment Mode
+        service_fee: Service Fee
+  common:
+    example_hotbid_redeemable_title: Example Hotbid Redeemable Title
+    not_for_sale: Not for sale.
+    collections: Collections
+    nft_user_name: Nft user name
+    no_new_notifications: There are no new notification available for you ...!
+    loading_text: Loading Please Wait . . .
+    wrong_network: Wrong Network
+    wrong_ntk_error: Please change your network to Mainnet
+  shared:
+    cancel: Cancel
+    change: Change
+    edit: Edit
+    destroy: Destroy
+    delete: Delete
+    in_progress: 'In Progress..'
+    done: Done
+    save: Save
+    show: Show
+    back: Back
+    submit: Submit
+    update: Update
+    add: Add
+    search: Search
+    try_again: Try again
+    start: Start
+    go_back: Go back
+    buy_now: Buy now
+    purchase: Purchase
+    rejected: Rejected
+    highest_bid: Highest bid
+    place_a_bid: Place a bid
+    reserve_price: Reserve price
+    put_on_sale: Put on sale
+    put_on_sale_msg: You'll receive bids on this item
+    pos_msg: You'll receive bids on this item
+    instant_sale_price: Instant sale price
+    instant_sale_price_msg: Enter the price for which the item will be instantly sold
+    unlock_one_purchased: Unlock one purchased
+    unlock_one_purchased_msg: Content will be unlocked after successful transaction
+    follow_steps: Follow steps
+    transfer: Transfer
+    convert_eth_to_weth: Convert ETH to WETH
+    transaction_with_wallet: Send transaction with your wallet
+    accept_bid: Accept Bid
+    go_to_dashboard: Go to Dashboard
+    share_link: Share link to this page
+    go_to_my_items: Go to My Items
+    no_data_found: No data found
+  bids:
+    new_bid: New Bid
+    show: 
+      users: 'User:'
+      collection: 'Collection:'
+      crypto_currency_type: 'Crypto currency type:'
+      crypto_currency: 'Crypto currency:'
+      register_date: 'Register date:'
+      is_active: 'Is active:'  
+  users:
+    link:
+      edit: "Edit User"
+      show: "User Profile"
+    heading:
+      edit: Update User
+    edit:
+      profile_details: Profile Details
+      followers: Followers
+      upload_profile: Upload Profile
+      upload_cover: Upload Cover
+      recommended_image_size: 'Recommended Image size Min. %{size}'
+      gif_compatible: Compatible with Gifs./ supports Gifs
+      user_name: User Name
+      custom_url: Custom URL
+      url_sample: nft.com/
+      twitter_username: Twitter Username
+      link: Link
+      twitter_link_text: Link your Twitter account in order to get the verification badge
+      personal_site: Personal site or Portfolio
+      bio: Bio
+      update_success: Profile details are successfully updated
+    show:
+      address: Address
+      name: Name
+      bio: Bio
+      filters: Filters
+      followers: Followers
+      follow: Follow
+      unfollow: Unfollow
+      on_sale: On Sale
+      created: Created
+      collectibles: Collectibles
+      liked: Liked
+      activity: Activity
+      open_filter: Open filter
+      clear_all: Clear all
+      minted: Minted
+      bids: Bids
+      likes: Likes
+      followings: Followings
+      profile_details: Profile details
+      login: Login
+      email: Email
+      first_name: First name
+      last_name: Last name
+      change_password: Change password
+      old_password: Old password
+      new_password: New password
+      confirm_new_password: Confirm new password
+    form:
+      name: Account Name
+      bio: Tell about yourself in a few words
+      attachment: User Profile Picture
+      personal_url: Enter custom URL
+      update: Update
+    following:
+      following_details: Following Details
+      following: Following
+      followers: Followers
+      started_following: started following 
+
+  dashboard:
+    search: Search
+    items: Items
+    users: Users
+    top_buyers: Top Buyers
+    top_sellers: Top sellers 
+    explore: Explore
+    connect_my_wallet: Connect my wallet
+    title: Get started creating & selling your NFTs
+    set_your_wallet: Set up your wallet
+    wallet_configuration_msg: You have successfully connected to your wallet.
+    wallet_choice: Once you’ve set up your wallet of choice, connect it to %{app_name} marketplace by clicking this link.
+    create_collection: Create your collection
+    create_collection_text: Click Create and set up your collection. Add social links, a description, profile & banner images, and set a secondary sales fee.
+    add_nfts: Add your NFTs 
+    nfts_help_text: Upload your work, add a title and description, and customize your NFTs with properties, stats, and unlockable content.
+    list_for_sale: List them for sale
+    choose_how_to_sell: Choose between auctions, fixed-price listings, and declining-price listings. You choose how you want to sell your NFTs, and we help you sell them!
+    search_collections: Here You Can Search For More Collections
+    search_results: Search results for %{query}
+    explore_digital_assets: Explore exclusive digital assets
+
+  collections:
+    collection_name: Collection Name / 1 of 1
+    collection: Collection
+    collection_create: Collection Create
+    successfully_minted: Successfully minted
+    liked_by: liked by
+    form:
+      accept_bid: Accept Bid
+      create_collection_tittle: 'Create %{collection_type} collectible item'
+      upload_file: "Upload file"
+      upload_cover: "Upload cover"
+      choose_file: Choose file
+      categories: Categories
+      item_details: Item details
+      item_name: Item name
+      description: Description
+      number_of_copies: Number of Copies
+      royalties: Royalties
+      properties: Properties
+      choose_collection: Choose Collection
+      nft: NFT
+      deploy_contract: Deploy contract
+      deploy_contract_msg: Deploy code for the new collection smart contract
+      create_contract: Create Contract
+      preview: preview
+      contract_detail: Contract Detail
+      name: Name
+      followers: Followers
+      symbol: Symbol
+      follow_steps: Follow steps
+      sign_message: Sign message
+      sign_message_text: Sign message with new collection preferences
+      approve: Approve
+      approve_text: Checking balance and approving
+      upload_mint: Upload files & Mint token
+      fixed_price: Set fixed price
+      fixed_price_text: Sign message to set fixed price
+      locked_content: Set locked content
+      locked_content_msg: Sign message to lock content
+      create_collectible: Create collectible
+      single: Single
+      multiple: Multiple
+      collection_type_text: Switch between options of single and multiple to choose the count of yor NFTs that has to be created and start creating your fortune
+      collection_type_txt: Choose “Single” if you want your collectible to be one of a kind or “Multiple” if you want to sell one collectible multiple times
+      collection_privacy: We do not own your private keys and cannot access your funds without your confirmation..
+    show:
+      descriptions: Descriptions
+      change_price_message: Updated successfully.
+      burn_error: NFT is not approved.
+      burn_success: NFT successfully burned.
+      invalid_user: Invalid user ID
+      transfer_success: Token transferred successfully.
+      more_options: More options
+      put_on_sale: Put on sale
+      change_price: Change Price
+      transfer_token: Transfer token
+      burn_token: Burn token
+      history: History
+      collection: Collection
+      creator: Creator
+      bids: Bids
+      details: Details
+      execute: Execute
+      owner: Owner
+      year_created: Year created
+      highest_bid: Highest bid
+      lowest_bid: Lowest bid
+      report: Report
+      other_author_assets: Other author assets
+      unlock_description: Unlock Description
+      user_wallet_address: User Wallet Address
+      transferring: Transferring
+      follow_the_wallet: Follow the wallet
+      place_a_bid: Place a Bid
+      bid_msg: You are about to place a bid for
+      your_bid: Your Bid
+      crypto_type: Crypto Type
+      quantity: Quantity
+      your_balance: Your balance
+      your_bidding_balance: Your bidding balance
+      service_fee: Service fee
+      total_bid_amount: Total bid amount
+      approve_your_bid: Approve your bid
+      approve_your_buy: Approve your buy.
+      approve: Approve
+      approve_terms: This transaction is conducted only once per collection
+      create_a_signature: Create a signature to place a bid
+      signature: Signature
+      burning: Burning
+      burn_token_alert: Are you sure to burn this token?, This action cannot be reverted, Token will be transfered to dead address.
+      remove_from_sale: Remove from sale
+      remove_sale_alert: Are you sure to remove from sale?, Existing bids will be cancelled.
+      accept_bid_by: You are about to accept bid for %{collection_title} by
+      royalty_fee: Royalty Fee
+      you_will_get: You will get
+      you_are_abt_purchase: You are about to purchase
+      quantity_available: 'Quantity:  %{token} available'
+      buy_price: Buy Price
+      your_buy_balance: Your buy balance
+      you_will_pay: You will pay
+      pay: pay
+      checkout: Checkout
+      owner_token: Owner %{token} editions
+  header:
+    title: Connect to Wallet
+    connect_wallet: Connect Your Walllet  
+    wallet_help: Connect with one of available wallet providers or create a new wallet.
+    wallet_info: What is wallet?
+    metamask_wallet: Metamask Wallet  
+    wallet_confi: We do not own private keys and cannot access your funds without your confirmation
+    age_limit: I am at least 13 years old
+    tc_acceptence: I accept the Terms of Service
+    proceed: Proceed
+    help_center: Help Center
+    descriptions: Descriptions
+    creator: Creator
+    home_title: The largest 
+    marketplace: Marketplace
+    home_desc: Digital marketplace for crypto collectibles and non-fungible tokens.
+    home_info: Buy, sell, and discover exclusive digital assets.
+    explore: Explore
+    collection: Collection
+    profile: Profile
+    settings: Settings
+    activity: Activity
+    discussion: Discussion
+    sign_out: Sign out
+
+  footer:
+    quick_links: Quick Links
+    about: About
+    abt_enigma: About Enigma
+    explore: Explore
+    support: Support
+    HIW: How its work?
+    community: Community
+    discussion: Discussion
+    voting: Voting
+    suggest_feature: Suggest feature
+    social_media: Social Media
+    tc: Terms and Condition
+    privacy_policy: Privacy Policy
+    tag_line: At POWNED, we are unlocking the potential of NFTs for content creators, e-sport professionals & organizations within the gaming industry
+    authors: Authors
+    activity: Activity
+    art: Art
+    photography: Photography
+    games: Games

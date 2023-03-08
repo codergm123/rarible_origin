@@ -1,0 +1,25 @@
+<% if @notifications.present? %>
+  <% @notifications.each do |notification| %>
+    <li>
+      <div class="notifier-elements">
+        <%= link_to "#{notification.redirect_path}", class: 'notify_link' do %>
+          <div class="notification-list-img">
+            <%= image_tag notification.image_url, class: 'img-responsive' %>
+          </div>
+          <div class="notification-list-content">
+            <p class="para-color" data-toggle="tooltip" data-placement="top" title="notification message"><%= notification.message %></p>
+            <div class="notification-list-timings" data-toggle="tooltip" data-placement="top" title="time ago">
+              <%= time_ago_in_words(notification.created_at).capitalize %>
+            </div>
+          </div>
+        <% end %>
+        
+      </div>
+    </li>
+  <% end %>
+<% else %>
+  <div class="notify_empty">
+    <img src="/assets/notification-bell.svg" />
+    <h4><%= t('common.no_new_notifications')%></h4>
+  </div>
+<% end %>

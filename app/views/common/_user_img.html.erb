@@ -1,0 +1,4 @@
+<%= link_to user_path(user.address), class:"user_img" do %>
+  <%= image_tag url_for(user.profile_image(:icon)), class: "img-responsive" %>
+  <% if user.is_verified? %><i class="fa fa-check-circle" aria-hidden="true"></i><% end %>
+<% end %>

@@ -1,0 +1,6 @@
+<% if @errors.present? %>
+  <%= custom_error_flash(@errors, 'error') %>
+<% else %>
+	<% flash.keep[:notice] = t('collections.show.transfer_success') %>
+	  window.location.replace("<%= collection_path(@collection.address) %>");
+<% end %>

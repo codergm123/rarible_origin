@@ -1,0 +1,24 @@
+<% if @errors.present? %>
+  <%= custom_error_flash(@errors, 'error') %>
+<% else %>
+  var addedList = $(".custom-user-id-input").val().split(",")
+  $("#collection_id").val("")
+
+  if (addedList[0] !== "" && addedList.includes("<%= @collection.id %>")) {
+    toastr.error("Collection already added to the list");
+  } else {
+    var totalCount = parseInt($(".users-total-count").data("count"));
+    totalCount -= 1
+    $(".users-total-count").data("count", totalCount)
+    $(".users-total-count").text('Only Left '+totalCount)
+    $('.featured-users-list').append('<%= j(render "featured_collection") %>');
+
+    if ($(".custom-user-id-input").val() === "") {
+      $(".custom-user-id-input").val("<%= @collection.id %>")
+    } else {
+      var val = $(".custom-user-id-input").val()
+      val += "," + "<%= @collection.id %>"
+      $(".custom-user-id-input").val(val)
+    }
+  }
+<% end %>

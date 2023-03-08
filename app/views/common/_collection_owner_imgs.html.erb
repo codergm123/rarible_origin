@@ -1,0 +1,5 @@
+<div class="explore-bid-auth-img">
+  <%= image_tag collection_type_img(collection), class: 'img-responsive' %>
+  <%= render partial: 'common/user_img', locals: {user: collection.creator} %>
+  <%= render partial: 'common/user_img', locals: {user: collection.owner} %>
+</div>

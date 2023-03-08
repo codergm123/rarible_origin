@@ -1,0 +1,18 @@
+<div class="col-md-3 col-sm-6 col-xs-12 custom-width-res-1">
+  <a href="#">
+    <div class="featured-creators-box">
+      <div class="featured-creators-box-img">
+        <div class="featured-creators-box-img-bg" style="background-image: url(<%= url_for(user.banner_image) %>);">
+          <%= image_tag url_for(user.banner_image), class: 'img-responsive' %>
+        </div>
+        <div class="featured-creators-box-img-profile">
+          <%= image_tag url_for(user.profile_image), class: 'img-responsive' %>
+        </div>
+      </div>
+      <div class="featured-creators-box-content">
+        <h4><%= user.name %></h4>
+        <!--<a href="#">@jonmonaghan</a>-->
+      </div>
+    </div>
+  </a>
+</div>

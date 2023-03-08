@@ -1,0 +1,5 @@
+<% if @errors.present? %>
+  <%= custom_error_flash(@errors, 'error') %>
+<% else %>
+'{"collectionId":"<%= j(@redirect_address) %>"}'
+<% end %>

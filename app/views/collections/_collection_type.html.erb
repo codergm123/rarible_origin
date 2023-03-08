@@ -1,0 +1,33 @@
+<section class="create-collectible-section pt-20 pb-20">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="create-collectible-box">
+          <div class="create-collectible-box-header">
+            <div class="heading-create-collectible main__title">
+              <h2 class="mt-0 mb-0"><%= t('collections.form.create_collectible')%></h2>
+              <a href="javascript:history.back()"><%= t('shared.go_back')%></a>
+            </div>
+          </div>
+          <div class="create-collectible-box-body">
+            <p class="pt-20"><%= t('collections.form.collection_type_text')%></p>
+            <p class="pt-20"><%= t('collections.form.collection_type_txt')%></p>
+
+            <div class="create-collectible-button-box">
+              <a class="single-multiple-create" href="<%= new_collection_path(type: "single")%>">
+                <%= image_tag "single.png" %>
+                <p><%= t('collections.form.single')%></p>
+              </a>
+              <a class="single-multiple-create" href="<%= new_collection_path(type: "multiple") %>">
+                <%= image_tag "multiple.png" %>
+                <p><%= t('collections.form.multiple')%></p>
+              </a>
+            </div>
+            <p><%= t('collections.form.collection_privacy')%></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

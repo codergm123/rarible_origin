@@ -1,0 +1,46 @@
+<div class="main-content">
+  <div class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title"><%= t("admin.fees.show.title") %></h4>
+
+            <div class="form-group row">
+              <label for="example-text-input" class="col-md-2 col-form-label"><%= t("admin.fees.show.name") %></label>
+              <div class="col-md-10">
+                <p class="pt-2"><%= @fee.name %></p>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="example-email-input" class="col-md-2 col-form-label"><%= t("admin.fees.show.fee_type") %></label>
+              <div class="col-md-10">
+                <p class="pt-2"><%= @fee.fee_type %></p>
+              </div>
+            </div>
+            <!--<div class="form-group row">-->
+              <!--<label for="example-email-input" class="col-md-2 col-form-label"><%= t("admin.fees.show.price") %></label>-->
+              <!--<div class="col-md-10">-->
+                <!--<p class="pt-2"><%= @fee.price %></p>-->
+              <!--</div>-->
+            <!--</div>-->
+            <div class="form-group row">
+              <label for="example-email-input" class="col-md-2 col-form-label"><%= t("admin.fees.show.percentage") %></label>
+              <div class="col-md-10">
+                <p class="pt-2"><%= @fee.percentage %></p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

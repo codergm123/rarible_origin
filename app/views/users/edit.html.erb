@@ -1,0 +1,149 @@
+<main class="main mt-0">
+  <% if current_user.banner.present? %>
+    <div class="main__author" style="background: url(<%= url_for(current_user.banner) %>) center center / cover no-repeat;;"></div>
+  <% else %>
+   <div class="main__author" data-bg="/assets/dummy-image.jpg" style="background: url(&quot;/assets/dummy-image.jpg&quot;) center center / cover no-repeat;"></div>
+  <% end %>
+  <div class="container">
+    <div class="row row--grid">
+      <div class="col-12 col-xl-3">
+        <div class="author author--page">
+          <div class="author__meta">
+            <%= link_to_image(current_user) %>
+            <% if current_user.is_verified %>
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+            <% end %>
+            <%= link_to_name(current_user) %>
+            <%= link_to_twitter(current_user) %>
+            <%= link_to_bio(current_user) %>
+            <%= link_to_personal_url(current_user) %>
+
+            <div class="author__wrap">
+              <div class="author__followers">
+                <p><%= current_user.followers.count %></p>
+                <span><%= t('users.edit.followers') %></span> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-xl-9">
+        <div class="edit_profile">
+          <div class="row row--grid">
+            <div class="col-12 col-lg-12">
+              <%= form_tag(user_path, method: :put, multipart: true, remote: true,:class=>"sign__form sign__form--profile") do %>
+                <div class="row">
+                  <div class="col-12">
+                    <h4 class="sign__title"><%= t('users.edit.profile_details') %></h4>
+                  </div>
+                  <div class="col-12">
+                    <div class="sign__group upload-profile-image" data-text="Change Profile Image">
+                      <%#= file_field_tag 'user[attachment]', class: 'file-upload-field', id: "imageUpload" %>
+                      <%#= file_field_tag 'user[banner]', class: 'file-upload-field', id: "bannerUpload" %>
+
+
+                      <div class="avatar-upload border-right-lite">
+                        <div class="avatar-preview">
+                          <% if current_user.attachment.present? %>
+                            <div id="imagePreview" style="background-image: url(<%= rails_storage_redirect_path(current_user.attachment) %>);"></div>
+                          <% else %>
+                            <div id="imagePreview" style="background-image: url('<%= User.default_image %>');"></div>
+                          <% end %>
+                        </div>
+                      
+                        <div class="avatar-edit">
+                            <%= file_field_tag 'user[attachment]', class: 'form-control-file', id: "imageUpload" %>
+                            <label for="imageUpload"><%= t('users.edit.upload_profile') %></label>
+                            <p><%= t('users.edit.recommended_image_size', size: '400x400') %><br><%= t('users.edit.gif_compatible') %></p>
+                        </div>                       
+                      </div>
+                      <div class="avatar-upload">
+                        <div class="avatar-preview banner_preview">
+                          <% if current_user.banner.present? %>
+                            <div id="bannerPreview" style="background-image: url(<%= rails_storage_redirect_path(current_user.banner) %>);"></div>
+                          <% else %>
+                            <div id="bannerPreview" style="background-image: url('/assets/dummy-image.jpg');"></div>
+                          <% end %>
+                        </div>
+                        <div class="avatar-edit">
+                            <%= file_field_tag 'user[banner]', class: 'form-control-file', id: "bannerUpload" %>
+                            <label for="bannerUpload"><%= t('users.edit.upload_cover') %></label>
+                            <p><%= t('users.edit.recommended_image_size', size: '840x400') %><br><%= t('users.edit.gif_compatible') %></p>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="sign__group">
+                      <label class="sign__label" for="user_name"><%= t('users.edit.user_name') %></label>
+                      <%= text_field_tag 'user[name]', current_user.name, class: 'sign__input', placeholder: t('users.form.name'), required: true %>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="sign__group lik_hold t_link">
+                      <label class="sign__label" for="twitter_username"><%= t('users.edit.twitter_username') %></label>
+                      <%= text_field_tag 'user[twitter_link]', current_user.twitter_link, class: 'sign__input', id: "twitter-username" %>
+                          <span>@</span>
+                          <span id="twitt_link"><%= t('users.edit.link') %></span>
+                          <p><%= t('users.edit.twitter_link_text') %></p>
+                    </div>
+                  </div>
+
+                  <!--<div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="sign__group lik_hold">
+                      <label class="sign__label" for="portfolio_url"><%= t('users.edit.personal_site') %></label>
+                      <%= text_field_tag 'user[personal_url]', current_user.personal_url, class: 'sign__input', id: "personal-site-or-portfolio", placeholder: t('users.form.personal_url'), required: true %>
+                          <span>https://</span>
+                    </div>
+                  </div>-->
+
+                  <div class="col-12">
+                    <div class="sign__group">
+                      <label class="sign__label" for="bio"><%= t('users.edit.bio') %></label>
+                      <%= text_area_tag 'user[bio]', current_user.bio, class: 'sign__input', placeholder: t('users.form.bio'), rows: 4, required: true %>
+                    </div>
+                  </div>
+                  
+                  <!--<div class="row">-->
+                  <!--<div class="col-12">
+                    <div class="verify-box">
+                      <div class="sign__group vr_box">
+                        <label class="sign__label">Verification</label>
+                        <p>Proceed with verification process to get more visibility and gain trush on Trap Marketplace. Please allow up to several weeks for the process.</p>
+                      </div>
+                      <div class="sign__group btn_box">
+                        <button class="sign__btn ver_btn create-clr" type="button">Get Verified <i class="fa fa-check"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>-->
+                  <!--<div class="col-12 col-md-6 col-lg-6 col-xl-6 text-center">-->
+                  <!--<button class="sign__btn ver_btn create-clr" type="button">Get Verified <i class="fa fa-check"></i>-->
+                  <!--</button>-->
+                  <!--</div>-->
+                  <!--</div>-->
+
+                  <div class="col-12 text-center">
+                    <button type="submit" type="button" class="sign__btn"><%= t('users.form.update') %></button>
+                  </div>
+                </div>
+              <%end%>
+            </div>
+          <!-- end details form -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<script type="text/javascript" charset="utf-8">
+  $('#twitt_link').click(function(){
+    let url = $('#twitter-username').val()
+    if(!url) {return}
+    url = `https://twitter.com/${url}`
+    window.open(url)
+  });
+</script>

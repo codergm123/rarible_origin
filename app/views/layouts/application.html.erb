@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= Rails.application.credentials.config[:app_name] %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+   
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <%= Gon::Base.render_data %>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <%= javascript_pack_tag 'application' %>
+    <%= javascript_pack_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js") %>
+  </head>
+
+ <body>
+   <%#= render "common/header_top" %>
+    <% if current_user %>
+      <%= render "common/my_header" %>
+    <% else %>
+      <%= render "common/header" %>
+    <% end %>
+    <!-- home -->
+    <!-- end home -->
+  <%= yield%>
+    
+    <%#= yield %>
+    <%= render "common/footer" %>
+    <%= render 'common/loader' %>
+    <%= render 'common/wrong_network' %>
+    <%= toastr_flash %>
+  </body>
+
+</html>

@@ -1,0 +1,129 @@
+
+
+<% if activity.event == 'create' ||
+        (activity.event == 'update' &&
+                Collection.is_valid_activity(activity) &&
+                (!activity.changeset["state"].present? ||
+                        (activity.changeset["state"].present? && activity.changeset["state"] != ["pending", "approved"]))) %>
+    <div class="activity">
+      <% if activity.event == "create" %>
+          <%= link_to collection_path(activity.item.address),:class=>"activity__cover" do %>
+                 <% if activity.item.attachment.content_type == 'video/mp4' %>
+                   <%= image_tag url_for(activity.item.cover),:size=>"140x162" %>
+                   <%else%>
+                   <%= image_tag url_for(activity.item.attachment),:size=>"140x162" %>
+                 <%end%>
+          <% end %>
+          <div class="activity__content">
+            <h3 class="activity__title">
+              <%= link_to collection_path(activity.item.address) do %>
+                  <%= activity.item.title %>
+              <% end %>
+
+            </h3>
+            <p class="activity__text">Minted by
+              <%= link_to user_path(activity.item.creator.address) do %>
+                  @<%= activity.item.creator.full_name %>
+              <% end %>
+              <span class="for_txt">for <b><%=activity.item.instant_sale_price%> WETH</b></span></p>
+            <span class="activity__time"><%= time_ago_in_words(activity.created_at) %> </span>
+          </div>
+      <% else %>
+          <% if activity.event == "update" %>
+              <% if activity.changeset.keys.include?("owner_id") %>
+               <% activity_dup = activity.dup %>
+                  <%= link_to collection_path(activity.item.address),:class=>"activity__cover" do %>
+                        <% if activity.item.attachment.content_type == 'video/mp4' %>
+                   <%= image_tag url_for(activity.item.cover),:size=>"140x162" %>
+                   <%else%>
+                   <%= image_tag url_for(activity.item.attachment),:size=>"140x162" %>
+                 <%end%>
+                  <% end %>
+                  <div class="activity__content">
+                    <h3 class="activity__title">
+                      <%= link_to collection_path(activity.item.address) do %>
+                          <%= activity.item.title %>
+                      <% end %>
+
+                    </h3>
+                    <p class="activity__text">Transferred from
+                      <%= link_to user_path(activity.reify.owner.address) do %>
+                          @<%= activity.reify.owner.full_name %>
+                      <% end %>
+                      <span class="for_txt"> to <b>@<%= link_to activity_dup.item.owner.full_name, user_path(activity_dup.item.owner.address)%></b></span></p>
+                    <span class="activity__time"><%= time_ago_in_words(activity_dup.created_at.nil? ? activity_dup.changeset["updated_at"].last : activity_dup.created_at) rescue "" %> </span>
+                  </div>
+              <% elsif activity.changeset.keys.include?("put_on_sale") %>
+                  <%= link_to collection_path(activity.item.address),:class=>"activity__cover" do %>
+                        <% if activity.item.attachment.content_type == 'video/mp4' %>
+                   <%= image_tag url_for(activity.item.cover),:size=>"140x162" %>
+                   <%else%>
+                   <%= image_tag url_for(activity.item.attachment),:size=>"140x162" %>
+                 <%end%>
+                  <% end %>
+                  <div class="activity__content">
+                    <h3 class="activity__title">
+                      <%= link_to collection_path(activity.item.address) do %>
+                          <%= activity.item.title %>
+                      <% end %>
+
+                    </h3>
+                    <p class="activity__text"><%= activity.changeset["put_on_sale"].last ? 'Put on sale' : 'Removed from sale' %> by
+                      <%= link_to user_path(activity.item.owner.address) do %>
+                          @<%= activity.item.owner.full_name %>
+                      <% end %>   <span class="for_txt"> on </span>
+                      <span class="activity__time"><%= time_ago_in_words(activity.created_at) %> </span>
+                  </div>
+
+              <% elsif activity.changeset.keys.include?("instant_sale_price") %>
+                  <%= link_to collection_path(activity.item.address),:class=>"activity__cover" do %>
+                        <% if activity.item.attachment.content_type == 'video/mp4' %>
+                   <%= image_tag url_for(activity.item.cover),:size=>"140x162" %>
+                   <%else%>
+                   <%= image_tag url_for(activity.item.attachment),:size=>"140x162" %>
+                 <%end%>
+                  <% end %>
+                  <div class="activity__content">
+                    <h3 class="activity__title">
+                      <%= link_to collection_path(activity.item.address) do %>
+                          <%= activity.item.title %>
+                      <% end %>
+
+                    </h3>
+                    <p class="activity__text">Price updated by
+                      <%= link_to user_path(activity.item.owner.address) do %>
+                          @<%= activity.item.owner.full_name %>
+                      <% end %>
+                      <span class="for_txt">for <b><%=activity.changeset["instant_sale_price"].last%> WETH</b></span></p>
+                    <span class="activity__time"><%= time_ago_in_words(activity.created_at) %> </span>
+                  </div>
+
+
+              <% elsif activity.changeset["state"].present? && activity.changeset["state"] == ["approved", "burned"] %>
+                  <%= link_to collection_path(activity.item.address),:class=>"activity__cover" do %>
+                       <% if activity.item.attachment.content_type == 'video/mp4' %>
+                   <%= image_tag url_for(activity.item.cover),:size=>"140x162" %>
+                   <%else%>
+                   <%= image_tag url_for(activity.item.attachment),:size=>"140x162" %>
+                 <%end%>
+                  <% end %>
+                  <div class="activity__content">
+                    <h3 class="activity__title">
+                      <%= link_to collection_path(activity.item.address) do %>
+                          <%= activity.item.title %>
+                      <% end %>
+
+                    </h3>
+                    <p class="activity__text">Burned on updated by
+                      <%= link_to user_path(activity.item.owner.address) do %>
+                          @<%= activity.item.owner.full_name %>
+                      <% end %>   <span class="for_txt"> on </span>
+                      <span class="activity__time"><%= time_ago_in_words(activity.created_at) %> </span>
+                  </div>
+
+
+              <% end %>
+          <% end %>
+      <% end %>
+    </div>
+<% end %>

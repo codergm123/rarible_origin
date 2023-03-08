@@ -1,0 +1,17 @@
+<div class="my-explore-div featured-user-entry">
+  <div class="box-explore-bids">
+    <div class="explore-bids-img" style="background-image: url(<%= url_for(@user.profile_image) %>);">
+      <%= image_tag url_for(@user.profile_image), class: "img-responsive" %>
+    </div>
+    <div class="explore-bid-opt-img">
+    </div>
+
+    <div class="explore-bids-content">
+      <h4><%= @user.name %></h4>
+      <p><b><%= @user.address %></b></p>
+    </div>
+    <div class="remove-button">
+      <button class="btn btn-sm featured-user-remove btn-danger" data-id="<%= @user.id %>" type="button"><%= t('shared.delete')%> <i class="far fa-trash-alt"></i></button>
+    </div>
+  </div>
+</div>

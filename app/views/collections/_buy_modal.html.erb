@@ -1,0 +1,71 @@
+<div class="zoom-anim-dialog mfp-hide modal sm_modal" id="Buy-modal">
+  <button class="modal__close md_cls" type="button"><i class="fas fa-times"></i></button>
+  <%= form_tag "javascript:void(0)", method: :post, remote: true, id: 'buyForm' do %>
+    <h4 class="modal-title share_link_page_h4"><%= t('collections.show.checkout') %></h4>
+    <div class="modal-body pt-10 pb-10">
+      <% erc20_token = @collection.erc20_token %>
+      <span id="buyContractAddress" class="hide"><%= erc20_token.address %></span>
+      <span id="buyContractDecimals" class="hide"><%= erc20_token.decimals %></span>
+      <p class="buynow-content">
+        <span class="innertitle"><%= t('collections.show.you_are_abt_purchase') %></span>
+        <span class="frm-title"><b><%= @collection.name %></b>,</span>
+        <span class="frm-desc"><%= @collection.description %>
+          <span class="frm-from" data-toggle="tooltip" data-placement="top" title="<%= @collection.owner.address %>">from <%= link_to @collection.owner.full_name, user_path(@collection.owner.address), target: '_blank' %></span></span>
+      </p>
+      <div class="placebidbuy_valbox">
+        <% price, symbol = @collection.sale_price %>
+        <div class="form-group bidBuyInputs">
+          <div>
+            <label for="recipient-name" class="col-form-label"><%= t('collections.show.quantity_available', token: @collection.owned_tokens.to_i) %></label>
+            <input type="number" id='buy_qty' name="buy[quantity]" maxQuantity="<%= @collection.owned_tokens.to_i %>" class="sign__input" placeholder="Enter quantity" required/>
+          </div>
+          <div>
+            <label for="recipient-name" class="col-form-label"><%= t('collections.show.buy_price') %></label>
+            <span class="price_currency sign__input">
+                  <span id="buy_price" price="<%= price %>"><%= price %></span><span id="buy_currency"><%= symbol %></span>
+                </span>
+          </div>
+        </div>
+        <div class="flex_box_inputs">
+          <span class="price-amt-content"><%= t('collections.show.your_balance') %></span>
+          <span class="price-amt-val" id="current_balance"><%= current_balance %> <%= Rails.application.credentials.config[:base_coin] %></span>
+        </div>
+        <div class="flex_box_inputs">
+          <span class="price-amt-content"><%= t('collections.show.your_buy_balance') %></span>
+          <span class="price-amt-val"><span class="ercCurBalance">0</span> <%= symbol %></span>
+        </div>
+        <div class="flex_box_inputs">
+          <span class="price-amt-content"><%= t('collections.show.service_fee') %></span>
+          <span class="price-amt-val"><span id="buy-amt-dp">0</span> <%= symbol %></span>
+        </div>
+        <div class="flex_box_inputs">
+          <span class="price-amt-content"><%= t('collections.show.you_will_pay') %></span>
+          <span class="price-amt-val"><span id="buy-total-amt-dp">0</span> <%= symbol %></span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer" style="text-align:center">
+      <a class="btn bidding-element-btn triggerBuyValidation theme-btn  sign__btn" href="" role="button"><%= t('collections.show.pay') %></a>
+    </div>
+  <% end %>
+</div>
+
+<div class="zoom-anim-dialog mfp-hide modal sm_modal" id="placeBuy">
+
+  <h4 class="modal-title"><%= t('shared.follow_steps') %></h4>
+
+  <div class="modal-body">
+    <div class="convertEth">
+      <%= render partial: 'convert_eth' %>
+    </div>
+
+    <div class="approveBuy">
+      <%= render partial: 'approve_buy' %>
+    </div>
+
+    <div class="purchaseBuy">
+      <%= render partial: 'purchase_buy' %>
+    </div>
+
+  </div>
+</div>

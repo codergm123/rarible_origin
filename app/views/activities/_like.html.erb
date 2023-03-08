@@ -1,0 +1,24 @@
+<% if activity.event == "create" && activity.item.user.present? && activity.item.collection.present? %>
+    <div class="activity">
+      <%= link_to collection_path(activity.item.collection.address),:class=>"activity__cover" do %>
+                <% if activity.item.collection.attachment.content_type == 'video/mp4' %>
+  <%= image_tag url_for(activity.item.collection.cover),:size=>"140x162" %>
+<%else%>
+  <%= image_tag url_for(activity.item.collection.attachment),:size=>"140x162" %>
+<%end%>
+    <% end %>
+      <div class="activity__content">
+        <h3 class="activity__title">
+          <%= link_to collection_path(activity.item.collection.address) do %>
+              <%= activity.item.collection.title %>
+          <% end %>
+
+        </h3>
+        <p class="activity__text">liked by
+          <%= link_to user_path(activity.item.user.address) do %>
+              @<%= activity.item.user.full_name %>
+          <% end %>  <br>
+          <span class="activity__time"><%= time_ago_in_words(activity.created_at) %> </span>
+      </div>
+    </div>
+<% end %>

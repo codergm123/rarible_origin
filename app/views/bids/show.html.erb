@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= t('bids.show.users')%></strong>
+  <%= @bid.user_id %>
+</p>
+
+<p>
+  <strong><%= t('bids.show.collection')%></strong>
+  <%= @bid.collection_id %>
+</p>
+
+<p>
+  <strong><%= t('bids.show.crypto_currency_type')%></strong>
+  <%= @bid.crypto_currency_type %>
+</p>
+
+<p>
+  <strong><%= t('bids.show.crypto_currency')%></strong>
+  <%= @bid.crypto_currency %>
+</p>
+
+<p>
+  <strong><%= t('bids.show.register_date')%></strong>
+  <%= @bid.register_date %>
+</p>
+
+<p>
+  <strong><%= t('bids.show.is_active')%></strong>
+  <%= @bid.is_active %>
+</p>
+
+<%= link_to t('shared.edit'), edit_bid_path(@bid) %> |
+<%= link_to t('shared.back'), bids_path %>

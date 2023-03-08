@@ -1,0 +1,30 @@
+<% if params[:page_no].to_i > 1 %>
+  $('.filters-content .row').append('<%= j(render partial: 'collection_card_by_categories', locals: {category_collections: @category_collections}) %>');
+<% else %>
+  $('.filters-content .row').html('<%= j(render partial: 'collection_card_by_categories', locals: {category_collections: @category_collections}) %>');
+<% end %>
+$('#dropdownMenuFilter').html('<%=params[:category] || 'All Categories'%> <i class="fas fa-chevron-down"></i>')
+// Top filter highlight
+$(".top-filter li.active").removeClass("active")
+<% if params[:category].present? %>
+  $("*[data-name='<%= params[:category] %>']").closest("li").addClass("active")
+<% else %>
+  $(".top-filter li:first").addClass("active")
+<% end %>
+
+// Sort by filter highlight
+$(".dashboard-sort-by.active").removeClass("active")
+<% if params[:sort_by].present? %>
+  $("*[data-name='<%= params[:sort_by] %>']").addClass("active")
+<% else %>
+  $(".dashboard-sort-by:first").addClass("active")
+<% end %>
+
+// Load more button actions
+$(".dashboard-load-more").data("page-no", "<%= params[:page_no].to_i + 1 %>")
+$(".dashboard-load-more").data("category", "<%= params[:category] %>")
+$(".dashboard-load-more").data("sort-by", "<%= params[:sort_by] %>")
+
+<% if params[:page_no].to_i == @category_collections.total_pages %>
+  $(".dashboard-load-more").closest(".row").hide()
+<% end %>

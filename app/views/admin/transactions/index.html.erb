@@ -1,0 +1,99 @@
+<div class="main-content">
+  <div class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box d-flex align-items-center justify-content-between">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-4">
+                  <h4 class="card-title"><%= t("admin.transactions.index.title") %></h4>
+                </div>
+                <div class="col-sm-8">
+                  <%= form_tag(admin_transactions_path, method: :get, class: '') do %>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <label>From</label>
+                        <input name="from_date" type="text" id="from-date" />
+                      </div>
+                      <div class="col-md-3">
+                        <label>To</label>
+                        <input name="to_date" type="text" id="to-date" />
+                      </div>
+                      <div class="col-md-3">
+                        <label>Sort</label><br>
+                        <%= select_tag "sort_by", options_for_select([["Latest", "latest"], ["Oldest", "oldest"]], nil), include_blank: "Select Option" %>
+                      </div>
+
+                      <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary btn-no-style"><%= t("shared.search")%></button>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                  <thead>
+                    <tr>
+                      <!-- <th><%#= t("admin.transactions.index.id") %></th> -->
+                      <th><%= t("admin.transactions.index.buyer") %></th>
+                      <th><%= t("admin.transactions.index.seller") %></th>
+                      <th><%= t("admin.transactions.index.service_fee") %></th>
+                      <th><%= t("admin.transactions.index.currency") %></th>
+                      <th><%= t("admin.transactions.index.currency_type") %></th>
+                      <th><%= t("admin.transactions.index.channel") %></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if @transactions.present? %>
+                      <% @transactions.each do |transaction| %>
+                        <tr>
+                          <!-- <td><%#= transaction.id %></td> -->
+                          <td><%= transaction.buyer.name %></td>
+                          <td><%= transaction.seller.name %></td>
+                          <td><%= service_fee_for_value(transaction.currency.to_f.to_s) %></td>
+                          <td><%= transaction.currency %></td>
+                          <td><%= transaction.currency_type %></td>
+                          <td><%= transaction.channel %></td>
+                        </tr>
+                      <% end %>
+                    <% else %>
+                      <tr>
+                        <td colspan="7"><%= t(:no_records, scope: :admin) %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="flickr_pagination">
+            <%= will_paginate @transactions %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $("#from-date, #to-date").datepicker({
+    dateFormat: "dd-mm-yy",
+    altFormat: "dd-mm-yy",
+  });
+});
+</script>

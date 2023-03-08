@@ -1,0 +1,5 @@
+<% if params[:page_no].to_i > 1 %>
+  $('.force-overflow-activity-test').append('<%= j(render partial: 'activities') %>');
+<% else %>
+  $('.force-overflow-activity-test').html('<%= j(render partial: 'activities') %>');
+<% end %>

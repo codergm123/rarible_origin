@@ -1,0 +1,6 @@
+<% if @collection_type.present? && ["single", "multiple"].include?(@collection_type) %>
+  <%= render "form" %>
+  <%#= react_component("collections/create", address: current_user.address, collection_type: @collection_type, my_items_url: my_items_path) %>
+<% else %>
+  <%= render "collection_type" %>
+<% end %>

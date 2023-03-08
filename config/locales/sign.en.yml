@@ -1,0 +1,6 @@
+en:
+  sign:
+    like: "I would like to save like for itemId: %{contract_address}:%{token_id}"
+    put_on_sale: "I would like to put on sale id: %{contract_address}:%{token_id}:%{owner_address}"
+    remove_from_sale: "I would like to remove from sale id: %{contract_address}:%{token_id}:%{owner_address}"
+    start_action: "I would like to create auction with parameters: id: %{nft_contract_address}:%{token_id}:%{owner_address}, currency: %{erc20_contract_address}, minPrice: %{min_price}, start: %{start_time}, end: %{end_time}"

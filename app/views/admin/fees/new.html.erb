@@ -1,0 +1,20 @@
+<div class="main-content">
+  <div class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <%= form_tag(admin_fees_path, method: :post, multipart: true) do %>
+            <%= render 'form', fee: @fee, title: "New Fee" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

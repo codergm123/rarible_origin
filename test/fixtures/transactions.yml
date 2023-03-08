@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  owner_id: 1
+  seller_id: 1
+  collection_id: 1
+  currency: MyString
+  currency_type: MyString
+  channel: 1
+
+two:
+  owner_id: 1
+  seller_id: 1
+  collection_id: 1
+  currency: MyString
+  currency_type: MyString
+  channel: 1

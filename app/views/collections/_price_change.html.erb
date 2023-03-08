@@ -1,0 +1,101 @@
+<div id="change-price" class="zoom-anim-dialog mfp-hide modal sm_modal">
+  <button class="modal__close md_cls" type="button"><i class="fas fa-times"></i></button>
+  <h4 class="modal-title share_link_page_h4"><%= t('collections.show.change_price') %></h4>
+  <%= form_tag(change_price_collection_path, method: :post, remote: true, class: 'change-price-form') do %>
+    <%= hidden_field_tag 'id', @collection.address, class: 'nft-detail-name' %>
+
+
+    <div class="modal-body pl-30 pr-30">
+      <div class="row mb-15">
+        <div class="col-md-8 col-sm-8 col-xs-8">
+          <label><%= t('shared.put_on_sale') %></label>
+          <p class="para-color"><%= t('shared.pos_msg') %></p>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <label class="switch">
+            <% if @collection.put_on_sale? %>
+              <input type="checkbox" name="collection[put_on_sale]" id="collection-put-on-sale" checked>
+            <% else %>
+              <input type="checkbox" name="collection[put_on_sale]" id="collection-put-on-sale">
+            <% end %>
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="row mb-15">
+        <div class="col-md-8 col-sm-8 col-xs-8">
+          <label><%= t('shared.instant_sale_price') %></label>
+          <p class="para-color"><%= t('shared.instant_sale_price_msg') %></p>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <label class="switch">
+            <input type="checkbox" id="collection_instant_sale_enabled" prevVal="<%= @collection.instant_sale_enabled %>" name="collection[instant_sale_enabled]" <%= 'checked' if @collection.instant_sale_enabled %>>
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+
+      <div id='instPrice' class="row mb-15 <%= 'hide' unless @collection.instant_sale_price.present? %>">
+        <div class="col-sm-12">
+          <div class="form-group bidBuyInputs bordered">
+            <div>
+              <input type="text" name="collection[instant_sale_price]" prevVal="<%= @collection.instant_sale_price %>" value="<%= @collection.instant_sale_price %>" class="form-control input-custom sign__input" id="instant-price" placeholder="Enter price for one piece"/>
+            </div>
+            <div>
+              <%= select_tag "collection[erc20_token_id]", options_for_select(Erc20Token.select_options, @collection.erc20_token_id), class: "form-control input-custom sign__input", required: true, prevVal: @collection.erc20_token_id %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-15">
+        <div class="col-md-8 col-sm-8 col-xs-8">
+          <label><%= t('shared.unlock_one_purchased') %></label>
+          <p class="para-color"><%= t('shared.unlock_one_purchased_msg') %></p>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <label class="switch">
+            <% if @collection.unlock_on_purchase? %>
+              <input type="checkbox" name="collection[unlock_on_purchase]" id="collection-unlock-on-purchase" checked>
+            <% else %>
+              <input type="checkbox" name="collection[unlock_on_purchase]" id="collection-unlock-on-purchase">
+            <% end %>
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+      <div class="row mb-15 unlock-description-section <%= 'hide' unless @collection.unlock_on_purchase? %>">
+        <div class="col-md-8 col-sm-8 col-xs-8">
+          <label><%= t('collections.show.unlock_description') %></label>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <input type="text" name="collection[unlock_description]" class="form-control input-custom sign__input" id="collection-unlock-description" placeholder="Enter unlock description" value="<%= @collection.unlock_description %>"/>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <%= submit_tag 'Update', class: 'hide', id: 'submitPriceChange', 'data-disable-with': "<i class='fa fa-spinner fa-spin'></i> Updating...".html_safe %>
+      <a class="btn bidding-element-btn triggerPriceChange theme-btn" href="javascript:void(0)" role="button">Update</a>
+      <a class="bidding-element-btn secondary-btn" data-dismiss="modal" role="button">Cancel</a>
+    </div>
+  <% end %>
+</div>
+
+
+<div class="zoom-anim-dialog mfp-hide modal sm_modal" id="priceChange">
+  <h4 class="modal-title share_link_page_h4"><%= t('shared.follow_steps') %></h4>
+  <div class="modal-body">
+
+    <div class="approveFlow">
+      <%= render partial: 'approve' %>
+    </div>
+
+    <div class="signFixedPrice hide">
+      <%= render partial: 'sign_fixed_price' %>
+    </div>
+  </div>
+</div>

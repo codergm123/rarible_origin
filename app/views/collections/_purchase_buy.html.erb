@@ -1,0 +1,18 @@
+<div class="follow-step-block">
+  <div class="follow-step-icon">
+    <i class="allStart purchaseStart fa fa-check-circle grey"></i>
+    <i class="allProgress purchaseProgress fa fa-spinner fa-pulse hide"></i>
+    <i class="allDone purchaseDone fa fa-check-circle hide"></i>
+    <i class="allRetry purchaseRetry fa fa-check-circle hide grey"></i>
+  </div>
+  <div class="follow-step-content">
+    <h4><%= t('shared.purchase')%></h4>
+    <p class="para-color"><%= t('shared.transaction_with_wallet')%></p>
+  </div>
+  <div class="follow-step-button">
+    <a href="javascript:void(0)" class="allStart purchaseStart disabledLink grey"><%= t('shared.start')%></a>
+    <a href="javascript:void(0)" class="allProgress purchaseProgress disabledLink hide"><%= t('shared.in_progress')%></a>
+    <a href="javascript:void(0)" class="allDone purchaseDone disabledLink hide"><%= t('shared.done')%></a>
+    <a href="javascript:void(0)" class="allRetry purchaseRetry hide"><%= t('shared.try_again')%></a>
+  </div>
+</div>

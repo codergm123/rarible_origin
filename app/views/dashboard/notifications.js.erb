@@ -1,0 +1,3 @@
+$(".user-notification-list li").remove();
+$('.user-notification-list').html('<%= j(render "notification_new") %>');
+$(".notification_count").text("0")

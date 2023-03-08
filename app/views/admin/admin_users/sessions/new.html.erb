@@ -1,0 +1,68 @@
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 pl-0 pr-0 banner-admin-credentials">
+
+        <div class="content-part-admin">
+          <div class="logo-content-part-admin">
+            <%= image_tag Rails.application.credentials.config[:app_logo], class: 'img-responsive logo-img' %>
+          </div>
+          <div class="content-part-admin-element">
+            <h3>“NFTs” means Ethereum-based tokens complying with the ERC-721 standard, ERC-1155 standard or other similar “non-fungible” token standard.</h3>
+            <p>NFTs are intended to be “non-fungible” tokens representing a unique Collectible; however, certain NFTs may be fungible with one another while being non-fungible with other NFTs </p>
+             
+          </div>
+          
+        </div>
+
+      </div>
+      <div class="col-md-6">
+
+        <div class="form-for-credentials">
+          <h2>Admin Login <%#= resource_name %></h2>
+
+          <%= form_for(resource, as: "admin_admin_user", url: admin_admin_user_session_path) do |f| %>
+            <div class="field form-group">
+              <%= f.label :email, class: "dis-label-custom" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+            </div>
+
+            <div class="field form-group">
+              <%= f.label :password, class: "dis-label-custom" %>
+              <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+            </div>
+
+            <% if devise_mapping.rememberable? %>
+              <div class="field form-group">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me, class: "dis-label-custom" %>
+              </div>
+            <% end %>
+
+            <div class="actions">
+              <%= f.submit "Log in", class: "btn btn-success-custom" %>
+            </div>
+          <% end %>
+
+          <div class="shared-link">
+            <%#= render "admin/admin_users/shared/links" %>
+          </div>
+
+          
+
+        </div>
+
+        
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+  var defaultHeight = $(window).height();
+$('.banner-admin-credentials').css('height', defaultHeight);
+</script>
+
+
+

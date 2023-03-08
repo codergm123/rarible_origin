@@ -1,0 +1,56 @@
+<%= hidden_field_tag 'bidId', nil %>
+<%= hidden_field_tag 'erc20ContractAddress', nil %>
+
+
+<div id="bidDetail" class="zoom-anim-dialog mfp-hide modal sm_modal">
+  <button class="modal__close md_cls" type="button"><i class="fas fa-times"></i></button>
+  <h4 class="modal-title share_link_page_h4"></h4>
+      <div class="modal-body accept_popup">
+        <div class="token-image">
+          <div class="token-image-grp">
+            <%= cover_tag(@collection) %>
+            <%= attachment_tag(@collection) %>
+          </div>
+        </div>
+        <div class="bidExecDesc">
+          <%= t('collections.show.accept_bid_by', collection_title: @collection.title)%> <span id="bidByUser"></span>
+        </div>
+        <div class="bidExecDetail"></div>
+        <div class="placebidbuy_valbox">
+          <div class="flex_box_inputs">
+            <span class="price-amt-content"><%= t('collections.show.service_fee')%></span>
+            <span class="price-amt-val"><span id="execServiceFee">0.0</span> <span class="executeBidSymbol"></span></span>
+          </div>
+
+          <% if @collection.royalty && @collection.royalty > 0 %>
+            <div class="flex_box_inputs">
+              <span class="price-amt-content"><%= t('collections.show.royalty_fee')%></span>
+              <span class="price-amt-val"><span  id="executeBidRoyaltyFee"><%= @collection.royalty %></span> <span class="executeBidSymbol"></span></span>
+            </div>
+          <% end %>
+
+          <div class="flex_box_inputs">
+            <span class="price-amt-content"><%= t('collections.show.you_will_get')%></span>
+            <span class="price-amt-val"><span  id="executeBidFinalAmt">0.0</span> <span class="executeBidSymbol"></span></span>
+          </div>
+        </div>
+        <div class="bidExec_btngrp">
+          <a class="btn buy-now bidding-element-btn triggerExecuteBidValidation theme-btn" href="#" role="button"><%= t('collections.show.accept_bid')%></a>
+        </div>
+      </div>
+</div>
+
+<div id="executeBid" class="zoom-anim-dialog mfp-hide modal sm_modal">
+  <button class="modal__close md_cls" type="button"><i class="fas fa-times"></i></button>
+  <h4 class="modal-title share_link_page_h4"><%= t('shared.follow_steps')%></h4>
+
+      <div class="modal-body">
+        <div class="approveFlow">
+          <%= render partial: 'approve_execute_bid' %>
+        </div>
+
+        <div class="signMsg">
+          <%= render partial: 'accept_bid' %>
+        </div>
+      </div>
+</div>

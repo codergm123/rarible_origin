@@ -1,0 +1,13 @@
+<div class="col-md-3 col-sm-6 col-xs-12 custom-width-res-1">
+  <div class="hot-coll-box">
+    <a href="<%= user_path(user.address) %>">
+      <div class="hot-coll-img" style="background-image: url(/assets/<%= url_for(user.banner_image) %>)">
+        <%= image_tag url_for(user.banner_image), class: 'img-responsive' %>
+      </div>
+      <div class="hot-coll-content">
+        <h4><%= t('common.collections')%></h4>
+        <p data-toggle="tooltip" data-placement="top" title="<%= user.full_name %>"><span>by</span> <%= user.full_name %></p>
+      </div>
+    </a>
+  </div>
+</div>

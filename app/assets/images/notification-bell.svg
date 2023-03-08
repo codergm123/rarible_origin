@@ -1,0 +1,22 @@
+<svg id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512"
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+	<linearGradient id="svg_circle" gradientUnits="userSpaceOnUse" x1="256" x2="256" y1="512" y2="0">
+		<stop offset="0" stop-color="#f1f5fe"/>
+		<stop offset="1" stop-color="#89b4e9"/>
+	</linearGradient>
+	<linearGradient id="svg_bell" gradientUnits="userSpaceOnUse" x1="256" x2="256" y1="105" y2="407">
+		<stop offset="0" stop-color="#1273eb"/>
+		<stop offset="1" stop-color="#89b4e9"/>
+	</linearGradient>
+	<g>
+		<g>
+			<circle cx="256" cy="256" fill="url(#svg_circle)" r="256"/>
+		</g>
+		<g>
+			<g>
+				<path d="m380.353 353.706c-19.595 0-35.53-15.934-35.53-35.529v-85.389c0-48.659-37.777-92.052-88.727-92.287-49.472-.228-88.92 40.371-88.92 88.852v88.824c0 19.595-15.935 35.529-35.53 35.529-4.909 0-8.882 3.973-8.882 8.882 0 4.91 3.973 8.882 8.882 8.882h248.706c4.909 0 8.882-3.973 8.882-8.882.001-4.909-3.972-8.882-8.881-8.882zm-124.353 53.294c11.565 0 21.332-7.448 25.011-17.765h-50.022c3.679 10.317 13.446 17.765 25.011 17.765zm26.114-280.631c-2.456-12.172-13.227-21.369-26.114-21.369-12.761 0-23.431 9.027-26.024 21.022 8.245-2.066 16.82-3.283 25.694-3.283 9.149.041 17.976 1.382 26.444 3.63z" fill="url(#svg_bell)"/>
+			</g>
+		</g>
+	</g>
+</svg>

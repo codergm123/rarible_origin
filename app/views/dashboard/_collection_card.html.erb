@@ -1,0 +1,55 @@
+<!-- 
+<div class="my-explore-div all games">
+<div class="my-explore-div all photography">
+<div class="my-explore-div all art">
+-->
+
+<% collection_attachment = collection.get_attachment(current_user)%>
+<div class="card">
+  <div class="t_c">
+
+    <a href="<%= collection_path(collection.address)%>" class="card__cover">
+        <span class="collection-card-img" style="background-image: url('<%= cover_url(collection) %>')">
+           <%= image_tag cover_url(collection)%>
+        </span>
+    </a>
+    <% if current_user %>
+        <%= react_component("collections/like", address: current_user.address, likes: collection.likes, collectionId: collection.id,likes_count: collection.likes.count) %>
+    <% else %>
+        <button class="card__likes heart">
+          <i class="far fa-heart"></i>
+          <i class="fas fa-heart"></i>
+          <span><%= collection.likes.count%></span>
+        </button>
+        
+    <% end %>
+
+  </div>
+  <div class="grid-box">
+    <h3 class="card__title" data-toggle="tooltip" data-placement="top" title="<%= collection.title %>">
+      <a href="<%= collection_path(collection.address)%>"><%= collection.title %></a>
+    </h3>
+
+    <div class="card__author">
+      <%= image_tag collection.owner.profile_image %>
+      <% if collection.owner.is_verified %>
+          <i class="fa fa-check-circle" aria-hidden="true"></i>
+      <% end %>
+      <a href="<%=user_path(collection.owner.address)%>" data-toggle="tooltip" data-placement="top" title="@<%= collection.owner.full_name%>">@<%= collection.owner.full_name%></a>
+    </div>
+  </div>
+  <div class="card__info">
+    <div class="card__price">
+      <span><%= t('shared.reserve_price')%></span>
+      <% if collection.instant_sale_price%>
+       <span><%=collection.instant_sale_price%> ETH</span>  
+      <% else %>
+        <% if collection.max_bid %>
+          <p class="bid_status">Highest bid <b><%= collection.max_bid.value %></b></p>
+        <%else%>
+          <span>No active Bids</span> 
+        <% end %>
+      <%end%>
+    </div>
+  </div>
+</div>

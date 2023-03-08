@@ -1,0 +1,184 @@
+<%if false%>
+    <footer class="pt-50 pb-15">
+      <div class="container-fluid padding-lr-custom-50">
+        <div class="row ml-0 mr-0">
+          <div class="col-md-12">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="footer-logo">
+                <h4><%= image_tag Rails.application.credentials.config[:app_logo], class: 'img-responsive logo-img' %></h4>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="quick-link">
+                <h4>><%= t('footer.quick_links') %></h4>
+                <ul>
+                  <li>
+                    <a><%= t('footer.about') %></a>
+                  </li>
+                  <li>
+                    <a href="<%= root_path %>"><%= t('footer.explore') %></a>
+                  </li>
+                  <li>
+                    <a><%= t('footer.HIW') %></a>
+                  </li>
+                  <li>
+                    <a><%= t('footer.support') %></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="community">
+                <h4><%= t('footer.community') %></h4>
+                <ul>
+                  <li>
+                    <a><%= t('footer.discussion') %></a>
+                  </li>
+                  <li>
+                    <a><%= t('footer.voting') %></a>
+                  </li>
+                  <li>
+                    <a><%= t('footer.suggest_feature') %></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="social-media">
+                <h4><%= t('footer.social_media') %></h4>
+                <ul>
+                  <li>
+                    <a href="javascript:void(0);">
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">
+                      <i class="fa fa-instagram"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">
+                      <i class="fa fa-youtube"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row ml-0 mr-0">
+          <div class="col-md-12">
+            <hr>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <p class="copyrights">© <%= Rails.application.credentials.config[:app_name] %>, Inc. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="li-copy">
+                <ul>
+                  <li><a><%= t('footer.tc') %></a></li>
+                  <li><a><%= t('footer.privacy_policy') %></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+<%end%>
+
+
+<!-- end get started -->
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4 order-1 order-md-1 order-lg-1 order-xl-1">
+        <%= image_tag Rails.application.credentials.config[:app_logo], class: 'img-responsive logo-img' %>
+        <p class="footer__tagline">
+          <%= t('footer.tag_line', app_name: Rails.application.credentials.config[:app_name]) %>
+        </p>
+      </div>
+
+      <div class="col-12 col-md-12 col-lg-12 col-xl-2 order-2"></div>
+
+      <div class="col-6 col-md-3 col-lg-3 col-xl-2 order-2 order-md-2 order-lg-2 order-xl-2 offset-md-0 offset-lg-0">
+        <h6 class="footer__title"><%= Rails.application.credentials.config[:app_name] %> Marketplace</h6>
+        <div class="footer__nav">
+          <a href="/about">About <%= Rails.application.credentials.config[:app_name] %> </a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms_conditions">Terms & Conditions</a>
+          <a href="/faq">Faq / How to</a>
+        </div>
+      </div>
+
+      <!-- <div class="col-12 col-md-6 col-lg-6 col-xl-4 order-4 order-lg-4 order-md-4 order-xl-3">
+        <div class="row">
+          <div class="col-12">
+            <h6 class="footer__title"><%#= t('footer.explore') %></h6>
+          </div>
+
+          <div class="col-6">
+            <div class="footer__nav">
+              <a href="javascript:void(0);"><%#= t('footer.art') %></a>
+              <a href="javascript:void(0);"><%#= t('footer.photography') %></a>
+              <a href="javascript:void(0);"><%#= t('footer.games') %></a>
+              <a href="javascript:void(0);"><%#= t('footer.music') %></a>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="footer__nav">
+              <a href="javascript:void(0);"><%#= t('footer.domains') %></a>
+              <a href="javascript:void(0);">DeFi</a>
+              <a href="javascript:void(0);">Metaverses</a>
+              <a href="javascript:void(0);">Memes</a>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="col-12 col-md-1 col-lg-1 col-xl-2 order-3 my-commere"></div>
+
+      <div class="col-6 col-md-3 col-lg-3 col-xl-2 order-3 order-lg-3 order-md-3 order-xl-4">
+        <h6 class="footer__title">Community</h6>
+        <div class="footer__nav">
+          <a href="https://pownedco.zendesk.com/hc/en-us" target="_blank">Help Center</a>
+          <a href="<%= Rails.application.credentials.config[:discussion_url] %>" target="_blank">Discussion</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="footer__content">
+          <div class="footer__social">
+            <a href="https://discord.com/channels/877419350024417331/877419350024417333" target="_blank" class="socialite-icon">
+              <%= image_tag "/assets/discord.png", class: 'img-responsive' %>
+            </a>
+            <a href="https://www.instagram.com/pownedco/" target="_blank" class="socialite-icon">
+              <%= image_tag "/assets/instagram.png", class: 'img-responsive' %>
+            </a>
+            <a href="https://twitter.com/pownedco" target="_blank" class="socialite-icon">
+              <%= image_tag "/assets/twitter.png", class: 'img-responsive' %>
+            </a>
+            <a href="https://www.tiktok.com/@pownedco" target="_blank" class="socialite-icon">
+              <%= image_tag "/assets/tik-tok.png", class: 'img-responsive' %>
+            </a>
+
+            <!-- <a href="javascript:void(0);" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="javascript:void(0);" target="_blank"><i class="fab fa-telegram-plane"></i></a> -->
+          </div>
+
+          <small class="footer__copyright">© <%= Rails.application.credentials.config[:app_name] %>, 2021.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+

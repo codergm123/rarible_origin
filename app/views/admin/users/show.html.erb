@@ -1,0 +1,50 @@
+<div class="main-content">
+  <div class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title"><%= t("admin.users.show.title") %></h4>
+            <div class="form-group row">
+              <label for="example-text-input" class="col-md-2 col-form-label"><%= t("admin.users.show.name") %></label>
+              <div class="col-md-10">
+                <p class="pt-2"><%= @user.name %></p>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="example-email-input" class="col-md-2 col-form-label"><%= t("admin.users.show.personal_url") %></label>
+              <div class="col-md-10">
+                <p class="pt-2"><%= @user.personal_url %></p>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label"><%= t("admin.users.show.bio") %></label>
+              <div class="col-md-10">
+                <p class="pt-2"><%= @user.bio %></p>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label"><%= t("admin.users.show.twitter_link") %></label>
+              <div class="col-md-10">
+                <p class="pt-2"><%= @user.twitter_link %></p>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label"><%= t("admin.users.show.is_verified") %></label>
+              <div class="col-md-10">
+                <p class="pt-2"><%= boolean_str(@user.is_verified) %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
